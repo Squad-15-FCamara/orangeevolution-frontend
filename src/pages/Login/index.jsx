@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { Form, Wrapper, Input , Button} from './style'
 import { data } from '../../data/data'
 import api from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export const Login = ()=> {
 
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
     const [inputs, setInputs] = useState({isAdmin: false})
 
@@ -56,6 +58,10 @@ export const Login = ()=> {
 
         CreateUser(inputs)
         setInputs( {[inputs.name] : [inputs.value]})
+
+        navigate("/")
+
+
     }
 
 
