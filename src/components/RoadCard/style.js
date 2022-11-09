@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  width: 320px;
+  width: 374px;
   height: 224px;
   border-radius: 20px;
   border: none;
@@ -9,7 +9,7 @@ export const Button = styled.button`
 `;
 
 export const Wrapper = styled.div`
-  width: 700px;
+  width: 800px;
   display: flex;
   flex-wrap: wrap;
   gap: 24px 32px;
