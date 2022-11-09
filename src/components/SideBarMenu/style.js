@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Wrapper = styled.div`
    width: 235px;
   height: 100vh;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  z-index: 99;
 `
 
 export const Menu = styled.div`
