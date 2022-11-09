@@ -1,16 +1,17 @@
-import { faArrowRightFromBracket, faChartLine, faBell, faFolderOpen, faStairs, faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faChartLine, faBell, faFolderOpen, faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import avatar from './avatar.svg'
+import logo from './logo_orange.svg'
 import {
   Wrapper,
   Logo,
   Menu,
   Links,
   LinkStyled,
+  LinkStyledSearch,
   SearchIcon,
   Input,
   HomeIcon,
   Text,
-  TrilhasIcon,
   PastasIcon,
   NotificaIcon,
   ProgressoIcon,
@@ -22,21 +23,17 @@ import {
 export const SideMenu = () => {
   return(
     <Wrapper>
-    <Logo/>
+    <Logo src={logo}/>
       <Menu>
 
           <Links>
-            <LinkStyled>
+            <LinkStyledSearch>
               <SearchIcon icon={faMagnifyingGlass} />
               <Input placeholder='Buscar'/>
-            </LinkStyled>
+            </LinkStyledSearch>
             <LinkStyled href='/'>
               <HomeIcon icon={faHouse}/>
               <Text>Home</Text>
-            </LinkStyled>
-            <LinkStyled href='/road'>
-              <TrilhasIcon icon={faStairs}/>
-              <Text>Trilhas</Text>
             </LinkStyled>
             <LinkStyled href='/savedcontent'>
               <PastasIcon icon={faFolderOpen}/>

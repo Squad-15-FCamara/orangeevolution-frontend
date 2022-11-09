@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   left: 0;
   background-color: white;
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const Menu = styled.div`
@@ -20,10 +23,7 @@ export const Menu = styled.div`
 `
 
 export const Logo = styled.img`
-  height: 80px;
-  width: 223px;
-  border: 1px solid #36357E;
-
+  margin-top: 20px;
 `
 
 export const LinkStyled = styled.a`
@@ -47,6 +47,13 @@ export const LinkStyled = styled.a`
     }
   }
 `
+
+
+export const LinkStyledSearch = styled(LinkStyled)`
+  border: 1px solid #36357E;
+`
+
+
 export const Links = styled.div`
   display: flex;
   flex-direction: column;
