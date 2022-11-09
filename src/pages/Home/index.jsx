@@ -1,7 +1,42 @@
-export function Home() {
+import { Card, Wrapper, Cards, Header, SubHeader} from "./style";
+import CardOrange from './card_orange_juice.svg'
+import { RoadCard } from "../../components/RoadCard";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+export const Home = () => {
+
+
+
+
   return (
-    <div>
-      <h1>Homepage</h1>
-    </div>
+    <Wrapper>
+      <Header> Olá, Thiago </Header>
+      <SubHeader>Novidades Orange</SubHeader>
+
+      <Cards>
+        <Swiper
+        style={{display: 'flex'}}
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        modules={[Navigation, Pagination, Scrollbar]}
+          spaceBetween={60}
+          slidesPerView={2.5}
+        >
+              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
+              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
+              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
+
+        </Swiper>
+      </Cards>
+
+      <SubHeader>Trilhas </SubHeader>
+
+      <RoadCard/>
+    </Wrapper>
   );
 }
