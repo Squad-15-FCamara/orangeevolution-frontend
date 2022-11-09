@@ -24,13 +24,12 @@ export const Home = () => {
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         modules={[Navigation, Pagination, Scrollbar]}
-          spaceBetween={60}
-          slidesPerView={2.5}
+        spaceBetween={60}
+        slidesPerView={2.5}
         >
-              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
-              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
-              <SwiperSlide><Card src={CardOrange}/></SwiperSlide>
-
+              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
+              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
+              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
         </Swiper>
       </Cards>
 
