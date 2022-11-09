@@ -34,11 +34,11 @@ export const SideMenu = () => {
               <HomeIcon icon={faHouse}/>
               <Text>Home</Text>
             </LinkStyled>
-            <LinkStyled href='/roads'>
+            <LinkStyled href='/road'>
               <TrilhasIcon icon={faStairs}/>
               <Text>Trilhas</Text>
             </LinkStyled>
-            <LinkStyled href='/folders'>
+            <LinkStyled href='/savedcontent'>
               <PastasIcon icon={faFolderOpen}/>
               <Text>Pastas</Text>
             </LinkStyled>
