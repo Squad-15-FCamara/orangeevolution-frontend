@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Form, Wrapper, Input , Button} from './style'
+import { Form, Wrapper, Input , Button, Label, WrapperContent, Titulo, CheckBox, ForgetPassword, Span, SpanWithLine, SpanCadastro, Cadastro} from './style'
 import { data } from '../../data/data'
 import api from '../../services/api'
 import { useNavigate } from 'react-router-dom'
@@ -80,11 +80,23 @@ export const Login = ()=> {
     return (
       <Wrapper>
         <Form onSubmit={handleSubmit}>
-          <Input type='text' placeholder='nome' name='name' value={inputs.name || ''} onChange={updateInput}/>
-          <Input type='text' placeholder='e-mail' name='email' value={inputs.email || ''} onChange={updateInput}/>
-          <Input type='text' placeholder='profissão' name='actualJob' value={inputs.actualJob || ''} onChange={updateInput}/>
+          <Titulo>Faça seu login</Titulo>
+          <WrapperContent>
+            <Label>Nome</Label>
+            <Input type='text' placeholder='nome' name='name' value={inputs.name || ''} onChange={updateInput}/>
+            <Input type='text' placeholder='e-mail' name='email' value={inputs.email || ''} onChange={updateInput}/>
+            <Input type='text' placeholder='profissão' name='actualJob' value={inputs.actualJob || ''} onChange={updateInput}/>
+            <Span>
+              <CheckBox type='checkbox'></CheckBox>
+              <Label>Lembrar de mim</Label>
+              <ForgetPassword>Esqueci minha senha</ForgetPassword>
+            </Span>
+            <Button type='submit'> Entrar </Button>
+            <SpanWithLine> ou </SpanWithLine>
+            <Button type='submit'> Entrar como Administrador </Button>
 
-          <Button type='submit'> ACESSAR TRILHAS </Button>
+            <SpanCadastro>Ainda não é membro? <Cadastro>Cadastre-se</Cadastro></SpanCadastro>
+          </WrapperContent>
         </Form>
 
       </Wrapper>
