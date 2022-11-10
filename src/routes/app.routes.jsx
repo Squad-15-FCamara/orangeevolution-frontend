@@ -7,7 +7,8 @@ import { RoadDev } from '../pages/RoadDev';
 import { RoadUx } from '../pages/RoadUx';
 import { RoadQa } from '../pages/RoadQa';
 import { RoadSoft } from '../pages/RoadSoft';
-import { Content } from '../pages/Content';
+import { ContentIntro } from '../pages/ContentIntro';
+import { ContentFull } from '../pages/ContentFull';
 import { SavedContent } from '../pages/SavedContent';
 import { Suggestions } from '../pages/Suggestions';
 import { Search } from '../pages/Search';
@@ -25,7 +26,8 @@ export function AppRoutes() {
         <Route path="roadux" element={<RoadUx />} />
         <Route path="roadqa" element={<RoadQa />} />
         <Route path="roadsoft" element={<RoadSoft />} />
-        <Route path="content" element={<Content />} />
+        <Route path="contentintro" element={<ContentIntro />} />
+        <Route path="contentfull" element={<ContentFull />} />
         <Route path="savedcontent" element={<SavedContent />} />
         <Route path="suggestions" element={<Suggestions />} />
         <Route path="search" element={<Search />} />
