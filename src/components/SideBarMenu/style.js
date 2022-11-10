@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
    width: 235px;
@@ -26,34 +26,6 @@ export const Logo = styled.img`
   margin-top: 20px;
 `
 
-export const LinkStyled = styled.a`
-  display: flex;
-  height: 48px;
-  align-items: center;
-  text-decoration: none;
-  gap: 10px;
-  width: 219px;
-  border-radius: 10px;
-  margin-top: 16px;
-
-  :hover{
-    background-color: #36357E;
-    color: white;
-    cursor: pointer;
-
-    >*{
-    color: white;
-    background-color: #36357E;
-    }
-  }
-`
-
-
-export const LinkStyledSearch = styled(LinkStyled)`
-  border: 1px solid #36357E;
-`
-
-
 export const Links = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +34,142 @@ export const Links = styled.div`
   margin-top: 20px;
 `
 
+
+export const HomeLinkStyled = styled(Link)`
+  display: flex;
+  height: 48px;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  width: 219px;
+  border-radius: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  background-color: ${(props)=> props.pathname === '/' ? '#36357E': 'white'};
+`
+
+export const TextHome = styled.p`
+  color:  ${(props)=> props.pathname === '/' ? 'white': '#36357E'};
+  list-style-type: none;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+`
+
+export const HomeIcon = styled(FontAwesomeIcon)`
+  color:  ${(props)=> props.pathname === '/' ? 'white': '#36357E'};
+  padding-left: 29px;
+  font-size: 25px;
+`
+
+
+
+export const PastasLinkStyled = styled(Link)`
+  display: flex;
+  height: 48px;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  width: 219px;
+  border-radius: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  background-color: ${(props)=> props.pathname === '/savedcontent' ? '#36357E': 'white'};
+`
+export const PastasIcon = styled(FontAwesomeIcon)`
+  color: ${(props)=> props.pathname === '/savedcontent' ? 'white': '#36357E'};
+  padding-left: 29px;
+  font-size: 25px;
+`
+
+export const TextPastas = styled.p`
+  color:  ${(props)=> props.pathname === '/savedcontent' ? 'white': '#36357E'};
+  list-style-type: none;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+`
+
+
+
+
+export const NotificaLinkStyled = styled(Link)`
+  display: flex;
+  height: 48px;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  width: 219px;
+  border-radius: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  background-color: ${(props)=> props.pathname === '/profile' ? '#36357E': 'white'};
+`
+export const NotificaIcon = styled(FontAwesomeIcon)`
+  color: ${(props)=> props.pathname === '/profile' ? 'white': '#36357E'};
+  padding-left: 29px;
+  font-size: 25px;
+`
+
+export const TextNotifica = styled.p`
+  color:  ${(props)=> props.pathname === '/profile' ? 'white': '#36357E'};
+  list-style-type: none;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+
+
+`
+
+
+
+
+export const ProgressionLinkStyled = styled(Link)`
+   display: flex;
+  height: 48px;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  width: 219px;
+  border-radius: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  background-color: ${(props)=> props.pathname === '/profile' ? '#36357E': 'white'};
+`
+export const ProgressoIcon = styled(FontAwesomeIcon)`
+  color: ${(props)=> props.pathname === '/profile' ? 'white': '#36357E'};
+  padding-left: 29px;
+  font-size: 25px;
+`
+
+export const TextProgression = styled.p`
+  color:  ${(props)=> props.pathname === '/profile' ? 'white': '#36357E'};
+  list-style-type: none;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+`
+
+
+
+export const LinkStyled = styled(Link)`
+  display: flex;
+  height: 48px;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  width: 219px;
+  border-radius: 10px;
+  margin-top: 16px;
+  cursor: pointer;
+  background-color: ${(props)=> props.pathname === '/' ? '#36357E': 'white'};
+
+`
+
+
+export const LinkStyledSearch = styled(LinkStyled)`
+  border: 1px solid #36357E;
+`
 export const Input = styled.input`
   height: 25px;
   border: none;
@@ -85,19 +193,6 @@ export const Input = styled.input`
   }
 `
 
-export const Text = styled.p`
-  color: #36357E;
-  list-style-type: none;
-  font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-
-  :hover{
-    background-color: #36357E;
-    color: white;
-  }
-`
-
 export const SearchIcon = styled(FontAwesomeIcon)`
     color: #36357E;
     padding-left: 29px;
@@ -105,47 +200,11 @@ export const SearchIcon = styled(FontAwesomeIcon)`
 
 `
 
-export const TrilhasIcon = styled(FontAwesomeIcon)`
-  color: #36357E;
-  padding-left: 29px;
-  font-size: 25px;
-
-`
-export const HomeIcon = styled(FontAwesomeIcon)`
-  color: #36357E;
-  padding-left: 29px;
-  font-size: 25px;
-
-`
-
-export const PastasIcon = styled(FontAwesomeIcon)`
-  color: #36357E;
-  padding-left: 29px;
-  font-size: 25px;
-
-`
-
-export const NotificaIcon = styled(FontAwesomeIcon)`
-  color: #36357E;
-  padding-left: 29px;
-  font-size: 25px;
-
-
-`
-
-export const ProgressoIcon = styled(FontAwesomeIcon)`
-  color: #36357E;
-  padding-left: 29px;
-  font-size: 25px;
-
-`
 
 export const LogOutIcon = styled(FontAwesomeIcon)`
   color: #ffffff;
   transform: rotate(180deg);
   font-size: 25px;
-
-
 `
 
 export const Profile = styled.div`

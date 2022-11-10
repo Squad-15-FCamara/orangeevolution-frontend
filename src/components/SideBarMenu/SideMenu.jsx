@@ -6,21 +6,33 @@ import {
   Logo,
   Menu,
   Links,
-  LinkStyled,
   LinkStyledSearch,
   SearchIcon,
   Input,
   HomeIcon,
-  Text,
   PastasIcon,
   NotificaIcon,
   ProgressoIcon,
   Profile,
   Avatar,
   Name,
-  LogOutIcon } from "./style";
+  LogOutIcon,
+  HomeLinkStyled,
+  PastasLinkStyled,
+  NotificaLinkStyled,
+  ProgressionLinkStyled,
+  TextHome,
+  TextNotifica,
+  TextPastas,
+  TextProgression
+} from "./style";
+
+  import { useLocation } from 'react-router-dom';
 
 export const SideMenu = () => {
+
+  let {pathname} = useLocation()
+
   return(
     <Wrapper>
     <Logo src={logo}/>
@@ -31,22 +43,22 @@ export const SideMenu = () => {
               <SearchIcon icon={faMagnifyingGlass} />
               <Input placeholder='Buscar'/>
             </LinkStyledSearch>
-            <LinkStyled href='/'>
-              <HomeIcon icon={faHouse}/>
-              <Text>Home</Text>
-            </LinkStyled>
-            <LinkStyled href='/savedcontent'>
-              <PastasIcon icon={faFolderOpen}/>
-              <Text>Pastas</Text>
-            </LinkStyled>
-            <LinkStyled href='/profile'>
-              <NotificaIcon icon={faBell} />
-              <Text>Notificações</Text>
-            </LinkStyled>
-            <LinkStyled href='/profile'>
-              <ProgressoIcon icon={faChartLine}/>
-              <Text>Progresso</Text>
-            </LinkStyled>
+            <HomeLinkStyled pathname={pathname} to='/'>
+              <HomeIcon pathname={pathname} icon={faHouse}/>
+              <TextHome pathname={pathname}>Home</TextHome>
+            </HomeLinkStyled>
+            <PastasLinkStyled pathname={pathname} to='/savedcontent'>
+              <PastasIcon pathname={pathname} icon={faFolderOpen}/>
+              <TextPastas pathname={pathname}>Pastas</TextPastas>
+            </PastasLinkStyled>
+            <NotificaLinkStyled pathname={pathname} to='/profile'>
+              <NotificaIcon pathname={pathname} icon={faBell} />
+              <TextNotifica pathname={pathname}>Notificações</TextNotifica>
+            </NotificaLinkStyled>
+            <ProgressionLinkStyled pathname={pathname} to='/profile'>
+              <ProgressoIcon pathname={pathname} icon={faChartLine}/>
+              <TextProgression pathname={pathname}>Progresso</TextProgression>
+            </ProgressionLinkStyled>
           </Links>
         <Profile>
           <Avatar src={avatar}/>
