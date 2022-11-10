@@ -1,7 +1,24 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { Form, Wrapper, Input , Button, Label, WrapperContent, Titulo, CheckBox, ForgetPassword, Span, SpanWithLine, SpanCadastro, Cadastro} from './style'
+import { Form,
+         Wrapper,
+         Input ,
+         Button,
+         Label,
+         WrapperContent,
+         Titulo,
+         CheckBox,
+         ForgetPassword,
+         Span,
+         SpanWithLine,
+         SpanCadastro,
+         Cadastro,
+         LogoDiv,
+         Logo,
+         Header,
+         CurlyBraces
+        } from './style'
 import { data } from '../../data/data'
 import api from '../../services/api'
 import { useNavigate } from 'react-router-dom'
@@ -79,6 +96,12 @@ export const Login = ()=> {
 
     return (
       <Wrapper>
+        <LogoDiv>
+          <Logo/>
+          <CurlyBraces>
+            <Header>Sua porta de entrada para o mundo da tecnologia!</Header>
+          </CurlyBraces>
+        </LogoDiv>
         <Form onSubmit={handleSubmit}>
           <Titulo>Faça seu login</Titulo>
           <WrapperContent>

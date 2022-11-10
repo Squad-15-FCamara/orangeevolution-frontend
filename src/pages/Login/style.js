@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Logo from './logo-login.svg'
+import logo from './logo-login.svg'
 import backgroundPic from './background.svg'
 
 export const Wrapper = styled.div`
@@ -13,9 +13,83 @@ padding: 0;
 width: 100%;
 height: 100vh;
 display: flex;
-flex-direction: column;
+gap: 115px;
 justify-content: center;
 align-items: center;
+flex-wrap: wrap;
+
+@media screen and (max-width: 800px){
+    height: 100%;
+    gap: 80px;
+    padding-bottom: 100px;
+  }
+`
+
+export const LogoDiv = styled.div`
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 700px;
+
+`
+
+export const Logo = styled.div`
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 50%;
+  width: 100%;
+
+  @media screen and (max-width: 1000px){
+    width: 80%;
+    height: 400px;
+  }
+`
+export const CurlyBraces = styled.span`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: '{';
+    font-size: 120px;
+    color: white;
+    font-weight: 600;
+  }
+
+  &:after {
+    content: '}';
+    font-size: 120px;
+    color: white;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 1000px){
+    width: 80%;
+
+  }
+`
+
+export const Header = styled.h1`
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+  padding-top: 20px;
+
+  @media screen and (max-width: 600px){
+    font-size: 28px;
+  }
+
 `
 
 export const Titulo = styled.h1`
@@ -46,6 +120,12 @@ max-width: 438px;
 height: 100%;
 max-height: 560px;
 border-radius: 16px;
+
+@media screen and (max-width: 450px){
+    margin: 0 10px;
+  }
+
+
 `
 
 export const Input = styled.input`
@@ -55,7 +135,7 @@ margin: 8px 0px;
 border: 1px solid #929292;
 background-color: transparent;
 border-radius: 10px;
-color: white;
+color: black;
 outline: none;
 font-family: 'Montserrat', sans-serif;
 font-size: 12px;
