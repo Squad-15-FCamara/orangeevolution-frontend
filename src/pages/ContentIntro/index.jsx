@@ -60,10 +60,10 @@ export function ContentIntro() {
           <ChosedRoadCard
             id={card.id}
             title={card.title}
-            type={card.idType}
+            idType={card.idType}
             time={card.time}
-            theme={card.idTheme}
-            road={card.idRoad}
+            idTheme={card.idTheme}
+            idRoad={card.idRoad}
             link={card.link}
             key={index}
           />
