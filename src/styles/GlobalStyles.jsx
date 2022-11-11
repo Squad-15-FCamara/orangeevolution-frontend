@@ -9,6 +9,10 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Montserrat', sans-serif;
  }
 
+ a {
+  text-decoration: none;
+ }
+
  .swiper-pagination-bullet{
   background-color: #000000!important;
   width: 12px;

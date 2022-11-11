@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 350px;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   background-color: white;
@@ -11,9 +11,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transition: 1s all;
 
-  @media screen and (max-width: 1100px){
-    visibility: hidden;
+  @media screen and (max-width: 1300px){
+    width: 0px;
   }
 `
 export const Titulo = styled.h1`
@@ -21,6 +22,8 @@ export const Titulo = styled.h1`
   font-size: 32px;
   font-weight: 800;
   margin-bottom: 0;
+  padding-left: 20px;
+
 `
 export const Subtitulo = styled.h3`
 font-family: 'Montserrat', sans-serif;
@@ -34,8 +37,9 @@ font-family: 'Montserrat', sans-serif;
 export const WrapperConteudo = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  /* gap: 50px; */
+  height: 100%;
+  gap: 40px;
+  padding-left: 20px;
 `
 
 export const Incompletos = styled.div`

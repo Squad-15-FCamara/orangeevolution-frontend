@@ -27,7 +27,7 @@ import {
   TextProgression
 } from "./style";
 
-  import { useLocation } from 'react-router-dom';
+  import { Link, useLocation } from 'react-router-dom';
 
 export const SideMenu = () => {
 
@@ -49,7 +49,7 @@ export const SideMenu = () => {
             </HomeLinkStyled>
             <PastasLinkStyled pathname={pathname} to='/savedcontent'>
               <PastasIcon pathname={pathname} icon={faFolderOpen}/>
-              <TextPastas pathname={pathname}>Pastas</TextPastas>
+              <TextPastas pathname={pathname}> Salvos </TextPastas>
             </PastasLinkStyled>
             <NotificaLinkStyled pathname={pathname} to='/profile'>
               <NotificaIcon pathname={pathname} icon={faBell} />
@@ -61,10 +61,11 @@ export const SideMenu = () => {
             </ProgressionLinkStyled>
           </Links>
         <Profile>
-          <Avatar src={avatar}/>
-          <Name>Thiago Bandeira</Name>
-          <LogOutIcon icon={faArrowRightFromBracket}/>
+            <Link to='/profile'><Avatar src={avatar}/></Link>
+            <Link to='/profile'><Name>Thiago Bandeira</Name></Link>
+            <Link to='/login'><LogOutIcon icon={faArrowRightFromBracket}/></Link>
         </Profile>
+
 
       </Menu>
     </Wrapper>

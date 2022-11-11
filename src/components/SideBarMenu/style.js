@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 export const Wrapper = styled.div`
    width: 235px;
   height: 100vh;
-  position: absolute;
-  left: 0;
+  position: fixed;
   background-color: white;
   z-index: 99;
   display: flex;
