@@ -24,18 +24,22 @@ import {
   TextHome,
   TextNotifica,
   TextPastas,
-  TextProgression
+  TextProgression,
+  Modal
 } from "./style";
 
   import { Link, useLocation } from 'react-router-dom';
+import { useState } from "react";
 
 export const SideMenu = () => {
 
+  const [isOpen, setIsOpen] = useState(false)
   let {pathname} = useLocation()
 
   return(
+    <>
     <Wrapper>
-    <Logo src={logo}/>
+      <Logo src={logo}/>
       <Menu>
 
           <Links>
@@ -63,11 +67,14 @@ export const SideMenu = () => {
         <Profile>
             <Link to='/profile'><Avatar src={avatar}/></Link>
             <Link to='/profile'><Name>Thiago Bandeira</Name></Link>
-            <Link to='/login'><LogOutIcon icon={faArrowRightFromBracket}/></Link>
+            <Link onClick={()=> setIsOpen(true)}><LogOutIcon icon={faArrowRightFromBracket}/></Link>
         </Profile>
 
-
       </Menu>
+
     </Wrapper>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
+
+    </>
   )
 }
