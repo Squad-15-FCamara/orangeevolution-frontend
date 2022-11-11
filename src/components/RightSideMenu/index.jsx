@@ -1,3 +1,4 @@
+import { StudyCard } from "../StudyCard"
 import { Wrapper, Favoritos, Incompletos, Titulo, WrapperConteudo, Subtitulo} from "./style"
 
 export const RightSideMenu = () => {
@@ -7,17 +8,14 @@ export const RightSideMenu = () => {
         <WrapperConteudo>
           <Favoritos>
               <Subtitulo>Favoritos</Subtitulo>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
-
+              <StudyCard/>
+              <StudyCard/>
 
           </Favoritos>
           <Incompletos>
               <Subtitulo>Incompletos</Subtitulo>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
-              <div style={{height: '100px', border: '1px solid gray', width: '320px'}}>uma div exemplo</div>
+              <StudyCard/>
+              <StudyCard/>
 
 
 
