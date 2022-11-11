@@ -1,7 +1,74 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+import api from '../../services/api';
+import { useEffect, useState } from 'react';
+
+import { Wrapper } from '../Home/style';
+import { Gradient, LinksContainer, Stats, Themes } from './style';
+import { ChosedRoadCard } from '../../components/ChosedRoadCard';
+import { ContainerTheme } from '../RoadDev/style';
+
 export function ContentIntro() {
+  const [roadDev, setRoadDev] = useState([]);
+  const [getUsers, setGetUser] = useState([]);
+  const [favoriteCourse, setFavoriteCourse] = useState([]);
+
+  useEffect(() => {
+    getCourses();
+    getUser();
+  }, []);
+
+  // mandar o get para o back que salvou fav
+  // setar estado de true ou false para botão clicado
+  // setar cor de acordo com o estado
+
+  async function getUser() {
+    await api
+      .get('/users/')
+      .then((response) => setGetUser(response.data))
+      .catch((err) => {
+        console.error('ops! ocorreu um erro' + err);
+      });
+    [];
+  }
+
+  async function getCourses() {
+    await api
+      .get('/courses/')
+      .then((response) => setRoadDev(response.data))
+      .catch((err) => {
+        console.error('ops! ocorreu um erro' + err);
+      });
+    [];
+  }
+
   return (
-    <div>
-      <h1>Tela de conteúdos da trilha Introdução</h1>
-    </div>
+    <Wrapper>
+      <LinksContainer>
+        <a href="/">Home</a>
+        <FontAwesomeIcon icon={faChevronRight} />
+        <a href="/roaddev">Dev Full Stack</a>
+        <FontAwesomeIcon icon={faChevronRight} />
+        <a href="#">Introdução</a>
+      </LinksContainer>
+      <Gradient>Introdução</Gradient>
+      <Stats>xxx pessoas estão estudando essa trilha</Stats>
+      <Themes>Conteúdos - 00/30</Themes>
+      <ContainerTheme>
+        {roadDev.map((card, index) => (
+          <ChosedRoadCard
+            id={card.id}
+            title={card.title}
+            type={card.idType}
+            time={card.time}
+            theme={card.idTheme}
+            road={card.idRoad}
+            link={card.link}
+            key={index}
+          />
+        ))}
+      </ContainerTheme>
+    </Wrapper>
   );
 }
