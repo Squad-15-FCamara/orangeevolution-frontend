@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTriangleExclamation, faCircleXmark, faCircleCheck} from "@fortawesome/free-solid-svg-icons";
+
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
@@ -230,3 +232,124 @@ export const Name = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 `
+
+
+
+//Modal de logout
+
+export const WrapperModal = styled.div`
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  z-index: 9955;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 2s all;
+`
+
+export const WrapperContent = styled.div`
+  width: 500px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  gap: 40px;
+`
+
+export const WarningDiv= styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 10px;
+
+`
+
+export const WarningIcon = styled(FontAwesomeIcon)`
+  color: red;
+`
+
+export const WarningText = styled.h3`
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+`
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+`
+
+export const LogoutBtn = styled.a`
+  height: 48px;
+  background-color: #FF4848;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 138px;
+  gap: 8px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+
+`
+export const LogOutIconModal = styled(FontAwesomeIcon)`
+  color: white;
+`
+
+export const KeepInBtn = styled.button`
+  height: 48px;
+  width: 190px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border: 1px solid #36357E;
+`
+
+export const KeepInIcon = styled(FontAwesomeIcon)`
+  color: #36357E;
+`
+
+export const KeepInText = styled.h3`
+  color: #36357E;
+  font-size: 14px;
+`
+
+export const Modal = ({setIsOpen}) =>{
+  return(
+    <WrapperModal onClick={()=> setIsOpen(false)}>
+      <WrapperContent>
+        <WarningDiv>
+          <WarningIcon className='fa-2xl' icon={faTriangleExclamation}/>
+          <WarningText>Deseja sair?</WarningText>
+        </WarningDiv>
+        <Buttons>
+          <LogoutBtn href='/login'>
+            <LogOutIconModal className='fa-xl' icon={faCircleXmark}/>
+            Quero sair
+          </LogoutBtn>
+          <KeepInBtn>
+            <KeepInIcon className='fa-xl' icon={faCircleCheck}/>
+            <KeepInText> Continuar logado </KeepInText>
+          </KeepInBtn>
+        </Buttons>
+      </WrapperContent>
+    </WrapperModal>
+
+  )
+}
