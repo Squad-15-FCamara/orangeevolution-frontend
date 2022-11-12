@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faBookmark } from '@fortawesome/free-solid-svg-icons';
+import api from '../../services/api';
+
 
 import { Container, LeftBar, Title, FaContainer } from './style';
 import {
@@ -11,12 +13,22 @@ import {
   Road,
 } from '../StudyCard/style';
 
-export function ChosedRoadCard({ title, idType, time, idTheme, idRoad, link }) {
+export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link, key }) {
+
+
+  async function setFavorite() {
+    await api
+          .get(`/statistics/favorites/4/${id}`)
+          .then(response => console.log(response.status))
+          .catch(e => console.log(e))
+  }
+
+
   return (
     <Container>
       <LeftBar />
       <FaContainer>
-        <button>
+        <button onClick={setFavorite}>
           <FontAwesomeIcon
             id="changeColor"
             icon={faBookmark}

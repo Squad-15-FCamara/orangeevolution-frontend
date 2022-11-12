@@ -16,26 +16,11 @@ export function ContentIntro() {
 
   useEffect(() => {
     getCourses();
-    getUser();
   }, []);
-
-  // mandar o get para o back que salvou fav
-  // setar estado de true ou false para botão clicado
-  // setar cor de acordo com o estado
-
-  async function getUser() {
-    await api
-      .get('/users/')
-      .then((response) => setGetUser(response.data))
-      .catch((err) => {
-        console.error('ops! ocorreu um erro' + err);
-      });
-    [];
-  }
 
   async function getCourses() {
     await api
-      .get('/courses/')
+      .get('/courses/themes/fullstack')
       .then((response) => setRoadDev(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
