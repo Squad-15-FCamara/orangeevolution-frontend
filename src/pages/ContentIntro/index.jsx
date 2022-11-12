@@ -11,8 +11,6 @@ import { ContainerTheme } from '../RoadDev/style';
 
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
-  const [getUsers, setGetUser] = useState([]);
-  const [favoriteCourse, setFavoriteCourse] = useState([]);
 
   useEffect(() => {
     getCourses();
@@ -20,7 +18,7 @@ export function ContentIntro() {
 
   async function getCourses() {
     await api
-      .get('/courses/themes/fullstack')
+      .get('/courses/themes/introdução')
       .then((response) => setRoadDev(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
