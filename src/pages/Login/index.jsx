@@ -26,54 +26,50 @@ import { useNavigate } from 'react-router-dom'
 export const Login = ()=> {
 
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(true)
+    // const [isLoading, setIsLoading] = useState(true)
     const [inputs, setInputs] = useState({isAdmin: false})
 
     useEffect(()=>{
-
-      PostData(data)
-      setIsLoading(false)
-      console.log(ArrayCursos)
-
-
-
+      // PostData(data)
+      // setIsLoading(false)
+      // console.log(ArrayCursos)
     },[])
 
     let ArrayCursos = [];
 
-    const PostData = async (data) => {
+    // const PostData = async (data) => {
 
-      await Promise.all(data.courses.map((curso)=>{
-        api.post('/courses', curso).then(resp =>{
-          ArrayCursos.push(resp)
-        })
-         return ArrayCursos
-      }))
+    //   await Promise.all(data.courses.map((curso)=>{
+    //     api.post('/courses', curso).then(resp =>{
+    //       ArrayCursos.push(resp)
+    //     })
+    //      return ArrayCursos
+    //   }))
 
-    }
+    // }
 
-    const CreateUser = async (inputs) =>{
-      await api
-        .post('/users', inputs)
-        .then(response => console.log(response))
-        .catch(e => console.log(e))
-    }
+    // const CreateUser = async (inputs) =>{
+    //   await api
+    //     .post('/users', inputs)
+    //     .then(response => console.log(response))
+    //     .catch(e => console.log(e))
+    // }
 
 
-    if(isLoading) {
-      return (
-        <div style={{width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', color: 'white'}}>
-          Loading...
-        </div>
-      )
-    }
+    // if(isLoading) {
+    //   return (
+    //     <div style={{width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', color: 'white'}}>
+    //       Loading...
+    //     </div>
+    //   )
+    // }
 
 
     const handleSubmit = (e) =>{
         e.preventDefault()
         console.log(inputs)
 
-        CreateUser(inputs)
+        // CreateUser(inputs)
         setInputs( {[inputs.name] : [inputs.value]})
 
         navigate("/")
