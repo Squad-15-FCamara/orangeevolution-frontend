@@ -2,7 +2,7 @@
 
 Inicie seus estudos seguindo uma trilha pré-definida ou personalize-a do seu jeito. Conte também com diversas funcionalidades que vão te ajudar a avançar cada vez mais nos estudos
 
-[Acesse a aplicação]()
+[Acesse a aplicação](https://lucky-zuccutto-95284a.netlify.app/)
 
 [Figma da aplicação](https://www.figma.com/file/7OcF3ZdgqwMXVWMur5lHvw/Orange-Evolution---Squad-15)
 
