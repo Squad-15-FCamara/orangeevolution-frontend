@@ -19,24 +19,12 @@ import { Form,
          Header,
          CurlyBraces
         } from './style'
-import { data } from '../../data/data'
-import api from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 
 export const Login = ()=> {
 
     const navigate = useNavigate()
-    // const [isLoading, setIsLoading] = useState(true)
     const [inputs, setInputs] = useState({isAdmin: false})
-
-
-    // if(isLoading) {
-    //   return (
-    //     <div style={{width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'black', color: 'white'}}>
-    //       Loading...
-    //     </div>
-    //   )
-    // }
 
 
     const handleSubmit = (e) =>{
@@ -59,8 +47,6 @@ export const Login = ()=> {
       })
 
     }
-
-
 
 
     return (
