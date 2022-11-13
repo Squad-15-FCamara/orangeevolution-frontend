@@ -28,7 +28,7 @@ export function StudyCard({ title, idType, time, idTheme, idRoad, link }) {
         <Road>{idRoad}</Road>
       </TextContainer>
       <FaContainer>
-        <a href={link}>
+        <a target="_blank" href={link}>
           <FontAwesomeIcon icon={faChevronRight} size="xl" />
         </a>
       </FaContainer>
