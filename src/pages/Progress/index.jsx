@@ -14,7 +14,7 @@ export function Progress() {
 
   useEffect(() => {
     fetchCourses();
-  },[]);
+  }, []);
 
   const fetchCourses = async () => {
     try {
@@ -22,7 +22,7 @@ export function Progress() {
       let doneResponse = await statisticsService.getDoneCoursesByUser(4);
       setDoingCourse(doingResponse.data);
       setDoneCourse(doneResponse.data);
-      setDisplayedCourses(doneCourses.concat(doingCourses));
+      setDisplayedCourses(doingCourses.concat(doneCourses));
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
@@ -33,7 +33,7 @@ export function Progress() {
       return setDisplayedCourses(doingCourses);
     } else if (status === "Concluídos") {
       return setDisplayedCourses(doneCourses);
-    } else return setDisplayedCourses(doneCourses.concat(doingCourses));
+    } else return setDisplayedCourses(doingCourses.concat(doneCourses));
   }
 
   return (
