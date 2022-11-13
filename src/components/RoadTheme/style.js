@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 769px;
+  width: 887px;
   height: 56px;
   border: 1px solid #4140bf;
   border-radius: 20px;
@@ -14,6 +14,12 @@ export const TextContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  a {
+    color: inherit;
+    &:visited {
+      color: inherit;
+    }
+  }
 `;
 
 export const LeftBar = styled.div`

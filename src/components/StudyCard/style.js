@@ -31,6 +31,12 @@ export const FaContainer = styled.div`
   background-color: #e2e2ff;
   width: 12%;
   border-radius: 0px 20px 20px 0px;
+  a {
+    color: inherit;
+    &:visited {
+      color: inherit;
+    }
+  }
 `;
 
 export const TypeContainer = styled.div`
