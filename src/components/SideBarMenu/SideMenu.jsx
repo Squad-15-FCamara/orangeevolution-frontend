@@ -29,30 +29,30 @@ import {
   InputDiv
 } from "./style";
 
-  import { Link, useLocation } from 'react-router-dom';
+  import { Link, useLocation, useParams } from 'react-router-dom';
 import { useState } from "react";
 
 export const SideMenu = () => {
 
-  const [searchState, setSearchState] = useState({})
-  const [input, setInput] = useState({search: ''})
+  const [input, setInput] = useState({})
   const [isOpen, setIsOpen] = useState(false)
 
   let {pathname} = useLocation()
 
 
   const UpdateInput = (e) =>{
-    const name = e.target.name;
-    const value = e.target.value;
-    setSearchState(input)
-    setInput({...input,
-      [name]: value
-  })
-    console.log(input)
-    console.log(searchState)
+    // const name = e.target.name;
+    // const value = e.target.value;
+    setInput({
+      ...input,
+      [name]: value,
+     })
+
+    // console.log(input)
+
   }
 
-
+  // state={{data: input}}
 
   return(
     <>
@@ -61,10 +61,10 @@ export const SideMenu = () => {
       <Menu>
           <Links>
             <InputDiv>
-              <LinkStyledSearch to='/search' state={{data: searchState}}>
+              <LinkStyledSearch to={`search/${input}`} >
                 <SearchIcon icon={faMagnifyingGlass} />
               </LinkStyledSearch>
-              <Input type='text' placeholder='Buscar' name='search' value={input.search} onChange={UpdateInput}/>
+              <Input type='text' placeholder='Buscar' name='search' value={input.search} onChange={(e)=> setInput(e.target.value)}/>
             </InputDiv>
 
 
