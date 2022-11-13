@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { Context } from '../../context/context';
 import api from '../../services/api';
+import { ContainerTheme } from '../RoadDev/style';
 import { Wrapper, Title } from './style';
 
 export function Search() {
@@ -65,19 +66,21 @@ export function Search() {
 
       {console.log(fetchResults)}
 
-      {fetchResults.map((course, index) => {
-        return (
-          <ChosedRoadCard
-            title={course.title}
-            idType={course.idType}
-            time={course.time}
-            idTheme={course.idTheme}
-            idRoad={course.idRoad}
-            link={course.link}
-            key={index}
-          />
-        );
-      })}
+      <ContainerTheme>
+        {fetchResults.map((course, index) => {
+          return (
+            <ChosedRoadCard
+              title={course.title}
+              idType={course.idType}
+              time={course.time}
+              idTheme={course.idTheme}
+              idRoad={course.idRoad}
+              link={course.link}
+              key={index}
+            />
+          );
+        })}
+      </ContainerTheme>
     </Wrapper>
   );
 }
