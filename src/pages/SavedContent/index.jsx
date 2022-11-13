@@ -5,21 +5,28 @@ import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
-import { adminServices } from '../../services/adminServices';
-import { ALL_ROADS } from './roads';
 
 export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
+  const [favThemes, setFavThemes] = useState([]);
 
   useEffect(() => {
     fetchInitialCoursesState()
   }, []);
 
-  const fetchInitialCoursesState = async() => {
+  let set = [];
+
+  const fetchInitialCoursesState = async () => {
     let response = await statisticsService.getFavoriteCoursesByUser(4);
     setAllFavCourses(response.data);
-    setFavCourses(response.data)
+    setFavCourses(response.data);
+
+    // tentativa de criar um SET de um array para filtrar automaticamente valores repetidos
+
+    // set = createSetByArr(response.data.idTheme);
+    // set.unshift('Tudo');
+    // console.log(set)
   }
 
   const filterCourses = async (title) => {
@@ -31,12 +38,19 @@ export function SavedContent() {
     setFavCourses(filteredContent);
   }
 
+  // funçao que cria um set a partir de um array
+
+  // const createSetByArr = (arr) => {
+  //   let newSet = [... new Set(arr)];
+  //   return newSet;
+  // }
+  
   return (
     <Wrapper>
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {ALL_ROADS.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item)} >{item}</ButtonS>)}
+        {allFavCourses.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item.idTheme)} >{item.idTheme}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
         {favCourses ? favCourses.map((card, index) => (
