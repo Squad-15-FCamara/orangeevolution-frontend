@@ -29,8 +29,8 @@ export function Progress() {
 
   const fetchingDone = async () => {
     try {
-      let responseDone = await statisticsService.getDoneCoursesByUser(4);
-      setDoneCourse(responseDone.data);
+      let response = await statisticsService.getDoneCoursesByUser(4);
+      setDoneCourse(response.data);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
