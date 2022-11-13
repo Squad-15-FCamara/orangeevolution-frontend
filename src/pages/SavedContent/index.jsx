@@ -5,11 +5,12 @@ import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
-import { courseService } from '../../services/courseService'
+import { adminServices } from '../../services/adminServices';
+import { ALL_ROADS } from './roads';
 
 export function SavedContent() {
-  const [filtered, setFiltered] = useState([]);
-  const [favThemes, setFavThemes] = useState([]);
+  const [favCourses, setFavCourses] = useState([]);
+  const [allFavCourses, setAllFavCourses] = useState([]);
 
   useEffect(() => {
     fetchInitialCoursesState()
@@ -17,21 +18,17 @@ export function SavedContent() {
 
   const fetchInitialCoursesState = async() => {
     let response = await statisticsService.getFavoriteCoursesByUser(4);
-    setFiltered(response.data);
-    setFavThemes(response.data.idTheme);
-    favThemes.unshift('Tudo')
-    console.log(favThemes)
+    setAllFavCourses(response.data);
+    setFavCourses(response.data)
   }
 
-  const fetchCourses = async (title) => {
-    // let response = await courseService.getAllCourses();
-    let response = await statisticsService.getFavoriteCoursesByUser(4);
-    if (title === "Tudo" || title === "") {
-      return setFiltered(response.data);
+  const filterCourses = async (title) => {
+    if (!favCourses) return console.error('não há cursos favoritos!');
+    if (title === "Tudo") {
+      return setFavCourses(allFavCourses);
     }
-    setFavThemes(response.data.idTheme);
-    const filteredContent = response.data.filter(item => item.idTheme.includes(title));
-    setFiltered(filteredContent);
+    const filteredContent = allFavCourses.filter(item => item.idTheme.includes(title));
+    setFavCourses(filteredContent);
   }
 
   return (
@@ -39,10 +36,10 @@ export function SavedContent() {
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {favThemes ? favThemes.map((item, index) => <ButtonS key={index} onClick={() => fetchCourses(item)} >{item}</ButtonS>) : <h1>non ecsiste</h1>}
+        {ALL_ROADS.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item)} >{item}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
-        {filtered ? filtered.map((card, index) => (
+        {favCourses ? favCourses.map((card, index) => (
           <ChosedRoadCard
             id={card.id}
             title={card.title}
