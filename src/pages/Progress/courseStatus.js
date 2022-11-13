@@ -1,3 +1,3 @@
 export const COURSE_STATUS = [
-    "Tudo", "Concluídos", "Em andamento"
+    "Tudo", "Em andamento", "Concluídos"
 ]
