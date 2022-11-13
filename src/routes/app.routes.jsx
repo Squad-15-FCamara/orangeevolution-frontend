@@ -18,9 +18,9 @@ import { NotFound } from '../pages/NotFound';
 export function AppRoutes() {
   return (
     <Routes>
-        <Route path="login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/" element={<DefaultLayout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="roaddev" element={<RoadDev />} />
         <Route path="roadux" element={<RoadUx />} />
