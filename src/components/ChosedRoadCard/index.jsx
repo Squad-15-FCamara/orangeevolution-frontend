@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import api from '../../services/api';
 
-
 import { Container, LeftBar, Title, FaContainer } from './style';
 import {
   TextContainer,
@@ -15,17 +14,22 @@ import {
 
 import { statisticsService } from '../../services/statisticsService';
 
-export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link, key }) {
-
-
-  const SetFavorite = statisticsService.addAFavoriteCourse
-
+export function ChosedRoadCard({
+  id,
+  title,
+  idType,
+  time,
+  idTheme,
+  idRoad,
+  link,
+}) {
+  const SetFavorite = statisticsService.addAFavoriteCourse;
 
   return (
     <Container>
       <LeftBar />
       <FaContainer>
-        <button onClick={()=> SetFavorite(4, `${id}`)}>
+        <button onClick={() => SetFavorite(4, `${id}`)}>
           <FontAwesomeIcon
             id="changeColor"
             icon={faBookmark}
