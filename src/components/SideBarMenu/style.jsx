@@ -151,6 +151,15 @@ export const TextProgression = styled.p`
   font-weight: 600;
 `
 
+export const InputDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #36357E;
+  height: 48px;
+  border-radius: 10px;
+  width: 220px;
+`
 
 
 export const LinkStyled = styled(Link)`
@@ -166,17 +175,20 @@ export const LinkStyled = styled(Link)`
   background-color: ${(props)=> props.pathname === '/' ? '#36357E': 'white'};
 
 `
-
-
 export const LinkStyledSearch = styled(LinkStyled)`
-  border: 1px solid #36357E;
+  width: 20px;
+  height: 40px;
+  position: relative;
+  margin: 0;
 `
 export const Input = styled.input`
   height: 25px;
-  border: none;
   outline: none;
+  border: none;
   font-size: 20px;
   padding: 2px;
+  padding-left: 10px;
+  margin-left: 15px;
   max-width: 130px;
   font-family: 'Montserrat';
   background-color: transparent;
@@ -196,11 +208,11 @@ export const Input = styled.input`
 
 export const SearchIcon = styled(FontAwesomeIcon)`
     color: #36357E;
-    padding-left: 29px;
+    padding-right: 15px;
     font-size: 25px;
-
+    position: absolute;
+    bottom: 8px;
 `
-
 
 export const LogOutIcon = styled(FontAwesomeIcon)`
   color: #ffffff;
@@ -232,6 +244,13 @@ export const Name = styled.p`
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 `
+
+
+
+
+
+
+
 
 
 
