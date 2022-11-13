@@ -21,6 +21,6 @@ export const ButtonS = styled.button`
   display: flex;
   align-items: center;
   font-size: 1.75rem;
-  font-weight: ${(props) => !props.clicked ? 500 : 700};
-  text-decoration: ${(props) => !props.clicked ? 'none' : 'underline'};
+  font-weight: ${(props) => (!props.clicked ? 500 : 700)};
+  text-decoration: ${(props) => (!props.clicked ? 'none' : 'underline')};
 `;
