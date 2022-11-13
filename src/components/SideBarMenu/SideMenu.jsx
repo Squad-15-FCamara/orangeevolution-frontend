@@ -71,7 +71,7 @@ export const SideMenu = () => {
               />
             </InputDiv>
 
-            <HomeLinkStyled pathname={pathname} to="home">
+            <HomeLinkStyled pathname={pathname} to="/home">
               <HomeIcon pathname={pathname} icon={faHouse} />
               <TextHome pathname={pathname}>Home</TextHome>
             </HomeLinkStyled>
