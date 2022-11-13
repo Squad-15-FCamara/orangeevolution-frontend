@@ -17,6 +17,6 @@ export const ProfileContainer = styled.div`
 `;
 
 export const Bio = styled.p`
-  width: 92%;
+  width: 75%;
   margin-top: 36px;
 `;
