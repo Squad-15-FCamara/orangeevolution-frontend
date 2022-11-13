@@ -24,7 +24,7 @@ export function SavedContent() {
       setAllFavCourses(response.data);
       setFavCourses(response.data);
     } catch (e) {
-      console.error('Ops! Encontramos um erro: ' + e.message)
+      console.error('Ops! Encontramos um erro: ' + e)
     }
   }
 
