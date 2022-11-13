@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const adminStatistics = {
+export const adminStatistic = {
 
     //ESTATÍSTICAS DO ADMINISTRADOR (número de cursos, usuários, cursos em andamento, cursos concluídos e cursos não-feitos)
     getNumberOfCourses: async () => {

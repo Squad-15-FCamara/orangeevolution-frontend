@@ -1,6 +1,6 @@
 import api from './api';
 
-export const adminServices = {
+export const adminService = {
   // METODOS DO ADMINISTRADOR (buscar e criar trilhas, temas, tipos)
   getAllRoadsName: async () => {
     let response = api.get(`adminServices/roads/names`);
