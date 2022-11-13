@@ -32,7 +32,7 @@ export function RoadDev() {
   return (
     <Wrapper>
       <LinksContainer>
-        <a href="/">Home</a>
+        <a href="../home">Home</a>
         <FontAwesomeIcon icon={faChevronRight} />
         <a href="#">Dev Full Stack</a>
       </LinksContainer>

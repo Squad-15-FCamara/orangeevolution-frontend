@@ -29,7 +29,7 @@ export function ContentIntro() {
   return (
     <Wrapper>
       <LinksContainer>
-        <a href="/">Home</a>
+        <a href="home">Home</a>
         <FontAwesomeIcon icon={faChevronRight} />
         <a href="/roaddev">Dev Full Stack</a>
         <FontAwesomeIcon icon={faChevronRight} />
