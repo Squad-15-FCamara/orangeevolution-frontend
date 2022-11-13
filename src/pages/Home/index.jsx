@@ -27,7 +27,8 @@ export const Home = () => {
   useEffect(() => {
     fetchingDoing();
     fetchingDone();
-  });
+  }),
+    [];
 
   const fetchingDoing = async () => {
     let response = await statisticsService.getDoingCoursesByUser(4);
