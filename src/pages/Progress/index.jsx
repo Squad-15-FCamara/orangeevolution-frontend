@@ -30,6 +30,7 @@ export function Progress() {
   };
 
   const filterCourses = (status) => {
+    setClicked(status);
     if (status === "Em andamento") {
       return setDisplayedCourses(doingCourses);
     } else if (status === "Concluídos") {
@@ -42,7 +43,7 @@ export function Progress() {
       <PageTitle>Progresso</PageTitle>
       <Stats>Acesse aqui seu progresso nos estudos</Stats>
       <FilterContainer>
-        {COURSE_STATUS.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item)} >{item}</ButtonS>)}
+        {COURSE_STATUS.map((item, index) => <ButtonS key={index} clicked={item === clicked} onClick={() => filterCourses(item)} >{item}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
         {displayedCourses.map((card, index) => (
