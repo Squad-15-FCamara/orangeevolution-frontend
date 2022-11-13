@@ -101,6 +101,7 @@ export const Home = () => {
               flexWrap: 'wrap',
               height: '360px',
               gap: '24px',
+              zIndex: '1',
             }}
           >
             {doingcourse.map((card, index) => (
@@ -137,6 +138,7 @@ export const Home = () => {
               flexWrap: 'wrap',
               height: '360px',
               gap: '24px',
+              zIndex: '1',
             }}
           >
             {donecourse.map((card, index) => (
