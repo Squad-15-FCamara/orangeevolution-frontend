@@ -28,8 +28,11 @@ export function SavedContent() {
     }
   }
 
-  const handleClick = async (title, clicked) => {
-    clicked === true;
+  const [clicked, setClicked] = useState('Tudo')
+
+  const handleClick = async (title) => {
+    // clicked === true;
+    setClicked(title)
     if (!favCourses) return console.error('não há cursos favoritos!');
     if (title === "Tudo") {
       return setFavCourses(allFavCourses);
@@ -38,12 +41,14 @@ export function SavedContent() {
     setFavCourses(filteredContent);
   }
 
+
+
   return (
     <Wrapper>
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {ALL_ROADS.map((item, index) => <ButtonS key={index} clicked={item.clicked} onClick={() => handleClick(item.title, item.clicked)} >{item.title}</ButtonS>)}
+        {ALL_ROADS.map((item, index) => <ButtonS key={index} clicked={item.title === clicked} onClick={() => handleClick(item.title)} >{item.title}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
         {favCourses ? favCourses.map((card, index) => (
