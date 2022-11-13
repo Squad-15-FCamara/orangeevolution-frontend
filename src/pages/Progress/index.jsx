@@ -17,13 +17,21 @@ export function Progress() {
     [];
 
   const fetchingDoing = async () => {
-    let response = await statisticsService.getDoingCoursesByUser(4);
-    setDoingCourse(response.data);
+    try {
+      let response = await statisticsService.getDoingCoursesByUser(4);
+      setDoingCourse(response.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e.message);
+    }
   };
 
   const fetchingDone = async () => {
-    let responseDone = await statisticsService.getDoneCoursesByUser(4);
-    setDoneCourse(responseDone.data);
+    try {
+      let responseDone = await statisticsService.getDoneCoursesByUser(4);
+      setDoneCourse(responseDone.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e.message);
+    }
   };
 
   return (
