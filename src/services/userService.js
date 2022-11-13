@@ -2,7 +2,7 @@ import api from "./api";
 
 export const userService = {
 
-    // METODOS DE USUÁRIO
+    // METODOS DE USUÁRIO (buscar todos os usuários, buscar por id, criar usuário, atualizar usuário e deletar usuário)
     getAllUsers: async() => {
         let response = await api.get(`users`);
         return response;
