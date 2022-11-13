@@ -11,6 +11,7 @@ export function Progress() {
   const [doingCourses, setDoingCourse] = useState([]);
   const [doneCourses, setDoneCourse] = useState([]);
   const [displayedCourses, setDisplayedCourses] = useState([]);
+  const [clicked, setClicked] = useState('Tudo');
 
   useEffect(() => {
     fetchCourses();
