@@ -46,11 +46,11 @@ export const HomeLinkStyled = styled(Link)`
   border-radius: 10px;
   margin-top: 16px;
   cursor: pointer;
-  background-color: ${(props)=> props.pathname === '/' ? '#36357E': 'white'};
+  background-color: ${(props)=> props.pathname === '/home' ? '#36357E': 'white'};
 `
 
 export const TextHome = styled.p`
-  color:  ${(props)=> props.pathname === '/' ? 'white': '#36357E'};
+  color:  ${(props)=> props.pathname === '/home' ? 'white': '#36357E'};
   list-style-type: none;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
@@ -58,8 +58,8 @@ export const TextHome = styled.p`
 `
 
 export const HomeIcon = styled(FontAwesomeIcon)`
-  color:  ${(props)=> props.pathname === '/' ? 'white': '#36357E'};
-  padding-left: 29px;
+  color:  ${(props)=> props.pathname === '/home' ? 'white': '#36357E'};
+  padding-left: 26px;
   font-size: 25px;
 `
 
