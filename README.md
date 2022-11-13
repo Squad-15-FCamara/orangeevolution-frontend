@@ -49,6 +49,11 @@ Yarn
 
 <table>
   <tr align="center">
+  <td>
+      <a href="https://www.linkedin.com/in/hugo-aragaor/" target="_blank">
+        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQFdUQLKuRNj5Q/profile-displayphoto-shrink_800_800/0/1660101393627?e=1674086400&v=beta&t=ARGMmQtUP8NbzM1t7ircwgWsLxA4zYiO39AlABLS4sg" height="150px">
+      </a>
+    </td>
     <td>
       <a href="https://github.com/Doge-Sma" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/67993920?v=4" height="150px">
@@ -72,16 +77,19 @@ Yarn
   </tr>
   <tr align="center">
     <td>
-      <a href="https://github.com/Doge-Sma" target="_blank">Jean Carlos</a>
+      <a href="https://www.linkedin.com/in/hugo-aragaor/" target="_blank">Hugo Aragão (UX)</a>
     </td>
     <td>
-      <a href="https://github.com/marcelofgaraujo" target="_blank">Marcelo Gregório</a>
+      <a href="https://github.com/Doge-Sma" target="_blank">Jean Carlos (Dev)</a>
     </td>
     <td>
-      <a href="https://github.com/matheusdamiao" target="_blank">Matheus Damião</a>
+      <a href="https://github.com/marcelofgaraujo" target="_blank">Marcelo Gregório (Dev)</a>
     </td>
     <td>
-      <a href="https://github.com/VMatiasDev" target="_blank">Vitor Matias</a>
+      <a href="https://github.com/matheusdamiao" target="_blank">Matheus Damião (Dev)</a>
+    </td>
+    <td>
+      <a href="https://github.com/VMatiasDev" target="_blank">Vitor Matias (Dev)</a>
     </td>
   </tr>
 </table>
