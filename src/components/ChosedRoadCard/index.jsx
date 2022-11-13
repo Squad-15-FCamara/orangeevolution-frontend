@@ -18,14 +18,6 @@ import { statisticsService } from '../../services/statisticsService';
 export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link, key }) {
 
 
-  async function setFavorite() {
-    await api
-          .get(`/statistics/favorites/4/${id}`)
-          .then(response => console.log(response.status))
-          .catch(e => console.log(e))
-  }
-
-
   const SetFavorite = statisticsService.addAFavoriteCourse
 
 
@@ -52,7 +44,7 @@ export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link,
         <Road>{idRoad}</Road>
       </TextContainer>
       <FaContainer>
-        <a href={link}>
+        <a target="_blank" href={link}>
           <FontAwesomeIcon icon={faChevronRight} size="xl" />
         </a>
       </FaContainer>
