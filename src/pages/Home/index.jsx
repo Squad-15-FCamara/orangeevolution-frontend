@@ -27,7 +27,8 @@ export const Home = () => {
   useEffect(() => {
     fetchingDoing();
     fetchingDone();
-  });
+  }),
+    [];
 
   const fetchingDoing = async () => {
     let response = await statisticsService.getDoingCoursesByUser(4);
@@ -101,6 +102,7 @@ export const Home = () => {
               flexWrap: 'wrap',
               height: '360px',
               gap: '24px',
+              zIndex: '1',
             }}
           >
             {doingcourse.map((card, index) => (
@@ -137,6 +139,7 @@ export const Home = () => {
               flexWrap: 'wrap',
               height: '360px',
               gap: '24px',
+              zIndex: '1',
             }}
           >
             {donecourse.map((card, index) => (

@@ -5,52 +5,45 @@ import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
+import { adminService } from '../../services/adminService';
+import { ALL_ROADS } from './roads';
 
 export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
-  const [favThemes, setFavThemes] = useState([]);
-
+  const [allRoads, setAllRoads] = useState([]);
+  // const [clicked, setClicked] = useState(false);
   useEffect(() => {
     fetchInitialCoursesState()
   }, []);
 
-  let set = [];
-
   const fetchInitialCoursesState = async () => {
-    let response = await statisticsService.getFavoriteCoursesByUser(4);
-    setAllFavCourses(response.data);
-    setFavCourses(response.data);
-
-    // tentativa de criar um SET de um array para filtrar automaticamente valores repetidos
-
-    // set = createSetByArr(response.data.idTheme);
-    // set.unshift('Tudo');
-    // console.log(set)
+    try {
+      let response = await statisticsService.getFavoriteCoursesByUser(4);
+      // let roadsRes = await adminService.getAllroadsName();
+      setAllFavCourses(response.data);
+      setFavCourses(response.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e.message)
+    }
   }
 
-  const filterCourses = async (title) => {
+  const handleClick = async (title, clicked) => {
+    clicked === true;
     if (!favCourses) return console.error('não há cursos favoritos!');
     if (title === "Tudo") {
       return setFavCourses(allFavCourses);
     }
-    const filteredContent = allFavCourses.filter(item => item.idTheme.includes(title));
+    const filteredContent = allFavCourses.filter(item => item.idRoad.includes(title));
     setFavCourses(filteredContent);
   }
 
-  // funçao que cria um set a partir de um array
-
-  // const createSetByArr = (arr) => {
-  //   let newSet = [... new Set(arr)];
-  //   return newSet;
-  // }
-  
   return (
     <Wrapper>
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {allFavCourses.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item.idTheme)} >{item.idTheme}</ButtonS>)}
+        {ALL_ROADS.map((item, index) => <ButtonS key={index} clicked={item.clicked} onClick={() => handleClick(item.title, item.clicked)} >{item.title}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
         {favCourses ? favCourses.map((card, index) => (

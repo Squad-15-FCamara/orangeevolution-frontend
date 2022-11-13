@@ -42,7 +42,9 @@ Yarn
   <img src="https://styled-components.com/logo.png" width='40' height='40' alt='styled components logo'/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" width='40' height='40' alt='java logo'/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" width='40' height='40' alt='spring logo'/>
-  <img src="https://www.h2database.com/html/images/h2-logo-2.png" width='40' height='40' alt='h2 logo'/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width='40' height='40' alt='mysql logo' />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" width='40' height='40' alt='azure logo' />
+  <img src="https://seeklogo.com/images/N/netlify-logo-758722CDF4-seeklogo.com.png" width='40' height='40' alt='netlify logo' />
 </div>
 
 <h2 align='center'>Equipe responsável</h2>
