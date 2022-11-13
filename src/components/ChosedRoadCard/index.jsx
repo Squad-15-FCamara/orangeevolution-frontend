@@ -13,6 +13,8 @@ import {
   Road,
 } from '../StudyCard/style';
 
+import { statisticsService } from '../../services/statisticsService';
+
 export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link, key }) {
 
 
@@ -24,11 +26,14 @@ export function ChosedRoadCard({ id, title, idType, time, idTheme, idRoad, link,
   }
 
 
+  const SetFavorite = statisticsService.addAFavoriteCourse
+
+
   return (
     <Container>
       <LeftBar />
       <FaContainer>
-        <button onClick={setFavorite}>
+        <button onClick={()=> SetFavorite(4, `${id}`)}>
           <FontAwesomeIcon
             id="changeColor"
             icon={faBookmark}
