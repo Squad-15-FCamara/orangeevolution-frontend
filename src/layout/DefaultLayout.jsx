@@ -10,7 +10,7 @@ export function DefaultLayout() {
       {/* <Header /> */}
       <SideMenu/>
       <Outlet />
-      <RightSideMenu/>
+      {/* <RightSideMenu/> */}
       <Footer />
     </div>
   );
