@@ -1,17 +1,43 @@
-import { Card, Wrapper, Cards, Header, SubHeader} from "./style";
-import CardOrange from './card_orange_juice.svg'
-import { RoadCard } from "../../components/RoadCard";
-import { Swiper, SwiperSlide } from 'swiper/react'
+import {
+  Card,
+  Wrapper,
+  Cards,
+  Header,
+  SubHeader,
+  Status,
+  CardsStudy,
+} from './style';
+import CardOrange from './card_orange_juice.svg';
+import { RoadCard } from '../../components/RoadCard';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { StudyCard } from '../../components/StudyCard';
+
+import { statisticsService } from '../../services/statisticsService';
+import { useEffect, useState } from 'react';
 
 export const Home = () => {
+  const [doingcourse, setDoingCourse] = useState([]);
+  const [donecourse, setDoneCourse] = useState([]);
 
+  useEffect(() => {
+    fetchingDoing();
+    fetchingDone();
+  });
 
+  const fetchingDoing = async () => {
+    let response = await statisticsService.getDoingCoursesByUser(4);
+    setDoingCourse(response.data);
+  };
 
+  const fetchingDone = async () => {
+    let responseDone = await statisticsService.getDoneCoursesByUser(4);
+    setDoneCourse(responseDone.data);
+  };
 
   return (
     <Wrapper>
@@ -20,22 +46,115 @@ export const Home = () => {
 
       <Cards>
         <Swiper
-        style={{display: 'flex'}}
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        modules={[Navigation, Pagination, Scrollbar]}
-        spaceBetween={60}
-        slidesPerView={2.5}
+          style={{ display: 'flex' }}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          modules={[Navigation, Pagination, Scrollbar]}
+          slidesPerView={2.5}
         >
-              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
-              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
-              <SwiperSlide><a target="blank" href='https://www.youtube.com/watch?v=dtt6GoGJkKM'><Card src={CardOrange}/></a></SwiperSlide>
+          <SwiperSlide>
+            <a
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </a>
+          </SwiperSlide>
+          <SwiperSlide>
+            <a
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </a>
+          </SwiperSlide>
+          <SwiperSlide>
+            <a
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </a>
+          </SwiperSlide>
         </Swiper>
       </Cards>
 
       <SubHeader>Trilhas </SubHeader>
 
-      <RoadCard/>
+      <RoadCard />
+
+      <SubHeader>Meus estudos</SubHeader>
+
+      <Status>Em andamento</Status>
+
+      <CardsStudy>
+        <Swiper
+          style={{ display: 'flex' }}
+          scrollbar={{ draggable: true }}
+          modules={[Navigation, Pagination, Scrollbar]}
+          slidesPerView={2.5}
+        >
+          <SwiperSlide
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              flexWrap: 'wrap',
+              height: '360px',
+              gap: '24px',
+            }}
+          >
+            {doingcourse.map((card, index) => (
+              <StudyCard
+                title={card.title}
+                idType={card.idType}
+                time={card.time}
+                idTheme={card.idTheme}
+                idRoad={card.idRoad}
+                link={card.link}
+                key={index}
+              />
+            ))}
+          </SwiperSlide>
+          <SwiperSlide />
+          <SwiperSlide />
+        </Swiper>
+      </CardsStudy>
+      <br />
+      <br />
+      <Status>Últimos Concluídos</Status>
+
+      <CardsStudy>
+        <Swiper
+          style={{ display: 'flex' }}
+          scrollbar={{ draggable: true }}
+          modules={[Navigation, Pagination, Scrollbar]}
+          slidesPerView={2.5}
+        >
+          <SwiperSlide
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              flexWrap: 'wrap',
+              height: '360px',
+              gap: '24px',
+            }}
+          >
+            {donecourse.map((card, index) => (
+              <StudyCard
+                title={card.title}
+                idType={card.idType}
+                time={card.time}
+                idTheme={card.idTheme}
+                idRoad={card.idRoad}
+                link={card.link}
+                key={index}
+              />
+            ))}
+          </SwiperSlide>
+          <SwiperSlide />
+          <SwiperSlide />
+        </Swiper>
+      </CardsStudy>
     </Wrapper>
   );
-}
+};

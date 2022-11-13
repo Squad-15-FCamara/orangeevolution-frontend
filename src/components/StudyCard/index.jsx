@@ -14,18 +14,18 @@ import {
   FaContainer,
 } from './style';
 
-export function StudyCard({ title, type, time, theme, road, link }) {
+export function StudyCard({ title, idType, time, idTheme, idRoad, link }) {
   return (
     <Card>
       <Paint />
       <TextContainer>
         <Title>{title}</Title>
         <TypeContainer>
-          <Type>{type}</Type>
+          <Type>{idType}</Type>
           <Duration>{time}min</Duration>
         </TypeContainer>
-        <Theme>{theme}</Theme>
-        <Road>{road}</Road>
+        <Theme>{idTheme}</Theme>
+        <Road>{idRoad}</Road>
       </TextContainer>
       <FaContainer>
         <a href={link}>
