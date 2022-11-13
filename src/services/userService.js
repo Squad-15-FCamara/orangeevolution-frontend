@@ -2,7 +2,11 @@ import api from "./api";
 
 export const userService = {
 
+ Feat/api-services
+    // METODOS DE USUÁRIO (buscar todos os usuários, buscar por id, criar usuário, atualizar usuário e deletar usuário)
+=======
     // METODOS DE USUÁRIO
+ develop
     getAllUsers: async() => {
         let response = await api.get(`users`);
         return response;

@@ -9,12 +9,20 @@ export const adminServices = {
     },
 
     getAllThemesName: async() => {
+ Feat/api-services
+        let response = api.get(`adminServices/themes/names`);
+=======
         let reponse = api.get(`adminServices/themes/names`);
+ develop
         return response;
     },
 
     getAllTypesName: async() => {
+ Feat/api-services
+        let response = api.get(`adminServices/types/names`);
+=======
         let response = api.get(`/adminServices/types/names`);
+ develop
         return response;
     },
 
