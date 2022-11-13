@@ -29,32 +29,6 @@ export const Login = ()=> {
     // const [isLoading, setIsLoading] = useState(true)
     const [inputs, setInputs] = useState({isAdmin: false})
 
-    useEffect(()=>{
-      // PostData(data)
-      // setIsLoading(false)
-      // console.log(ArrayCursos)
-    },[])
-
-    let ArrayCursos = [];
-
-    // const PostData = async (data) => {
-
-    //   await Promise.all(data.courses.map((curso)=>{
-    //     api.post('/courses', curso).then(resp =>{
-    //       ArrayCursos.push(resp)
-    //     })
-    //      return ArrayCursos
-    //   }))
-
-    // }
-
-    // const CreateUser = async (inputs) =>{
-    //   await api
-    //     .post('/users', inputs)
-    //     .then(response => console.log(response))
-    //     .catch(e => console.log(e))
-    // }
-
 
     // if(isLoading) {
     //   return (
@@ -69,15 +43,12 @@ export const Login = ()=> {
         e.preventDefault()
         console.log(inputs)
 
-        // CreateUser(inputs)
         setInputs( {[inputs.name] : [inputs.value]})
 
         navigate("/")
 
 
     }
-
-
 
 
     const updateInput = (e) =>{
@@ -88,6 +59,8 @@ export const Login = ()=> {
       })
 
     }
+
+
 
 
     return (
