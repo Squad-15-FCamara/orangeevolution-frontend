@@ -10,7 +10,7 @@ import { RoadSoft } from '../pages/RoadSoft';
 import { ContentIntro } from '../pages/ContentIntro';
 import { ContentFull } from '../pages/ContentFull';
 import { SavedContent } from '../pages/SavedContent';
-import { Suggestions } from '../pages/Suggestions';
+import { Progress } from '../pages/Progress';
 import { Search } from '../pages/Search';
 import { Statistics } from '../pages/Statistics';
 import { NotFound } from '../pages/NotFound';
@@ -19,27 +19,24 @@ import { ContextProvider } from '../context/context';
 export function AppRoutes() {
   return (
     <ContextProvider>
-
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="home" element={<Home />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="roaddev" element={<RoadDev />} />
-        <Route path="roadux" element={<RoadUx />} />
-        <Route path="roadqa" element={<RoadQa />} />
-        <Route path="roadsoft" element={<RoadSoft />} />
-        <Route path="contentintro" element={<ContentIntro />} />
-        <Route path="contentfull" element={<ContentFull />} />
-        <Route path="savedcontent" element={<SavedContent />} />
-        <Route path="suggestions" element={<Suggestions />} />
-        <Route path="search" element={<Search />} />
-        <Route path="statistics" element={<Statistics />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="home" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="roaddev" element={<RoadDev />} />
+          <Route path="roadux" element={<RoadUx />} />
+          <Route path="roadqa" element={<RoadQa />} />
+          <Route path="roadsoft" element={<RoadSoft />} />
+          <Route path="contentintro" element={<ContentIntro />} />
+          <Route path="contentfull" element={<ContentFull />} />
+          <Route path="savedcontent" element={<SavedContent />} />
+          <Route path="progress" element={<Progress />} />
+          <Route path="search" element={<Search />} />
+          <Route path="statistics" element={<Statistics />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </ContextProvider>
-
   );
 }
