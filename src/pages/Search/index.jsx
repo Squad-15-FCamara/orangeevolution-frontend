@@ -1,40 +1,37 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { ChosedRoadCard } from "../../components/ChosedRoadCard";
+import { Context } from "../../context/context";
 import api from '../../services/api';
 import { Wrapper, Title } from "./style";
 
 
 export function Search() {
 
-  const [searchState, setSearchState] = useState([])
   const [fetchResults, setFetchResults] = useState([])
-  const location = useLocation()
-  const data = location.state?.data.search;
+  const { inputSearch } = useContext(Context);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const { search } = useParams()
-    const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(()=>{
-    // setSearchState(data)
-    fetching()
-  },[])
-
-
-  // useEffect(()=>{
-  //   if(searchState){
-  //     fetching()
-  //   }
-  //   setIsLoading(false)
-  // },[searchState])
-
+    if(!inputSearch == ''){
+      fetching();
+    }
+    if(fetchResults){
+      setIsLoading(false)
+    }
+    if(inputSearch === ''){
+      setFetchResults([])
+    }
+  },[inputSearch])
 
 
 
   const fetching = async () => {
     const response = await api
-      .get(`/courses/titles/${search}`)
+      .get(`/courses/titles/${inputSearch}`)
       .then((response) => setFetchResults(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
@@ -56,10 +53,15 @@ export function Search() {
 
   return (
     <Wrapper>
-      <Title> Resultados da busca "{search}"</Title>
+      <Title> Resultados da busca "{inputSearch}"</Title>
+      {fetchResults.length === 0 && <h3>
+        Não encontramos resultado para sua busca de "{inputSearch}". Tente novamente
+      </h3> }
+
       {console.log(fetchResults)}
-      {search.map((course)=>{
-        return <ChosedRoadCard title={course.title}/>
+
+      {fetchResults.map((course)=>{
+        return <ChosedRoadCard title={course.title} />
       })}
     </Wrapper>
   );
