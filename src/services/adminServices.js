@@ -9,7 +9,7 @@ export const adminServices = {
     },
 
     getAllThemesName: async() => {
-        let reponse = api.get(`adminServices/themes/names`);
+        let response = api.get(`adminServices/themes/names`);
         return response;
     },
 
