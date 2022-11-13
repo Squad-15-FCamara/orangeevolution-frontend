@@ -12,7 +12,8 @@ export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
   const [allRoads, setAllRoads] = useState([]);
-  // const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState('Tudo');
+  
   useEffect(() => {
     fetchInitialCoursesState()
   }, []);
@@ -20,7 +21,6 @@ export function SavedContent() {
   const fetchInitialCoursesState = async () => {
     try {
       let response = await statisticsService.getFavoriteCoursesByUser(4);
-      // let roadsRes = await adminService.getAllroadsName();
       setAllFavCourses(response.data);
       setFavCourses(response.data);
     } catch (e) {
@@ -28,10 +28,7 @@ export function SavedContent() {
     }
   }
 
-  const [clicked, setClicked] = useState('Tudo')
-
   const handleClick = async (title) => {
-    // clicked === true;
     setClicked(title)
     if (!favCourses) return console.error('não há cursos favoritos!');
     if (title === "Tudo") {
@@ -40,8 +37,6 @@ export function SavedContent() {
     const filteredContent = allFavCourses.filter(item => item.idRoad.includes(title));
     setFavCourses(filteredContent);
   }
-
-
 
   return (
     <Wrapper>
