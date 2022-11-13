@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { DiscordIcon } from '../components/Discord';
 // import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { RightSideMenu } from '../components/RightSideMenu';
@@ -8,9 +9,10 @@ export function DefaultLayout() {
   return (
     <div>
       {/* <Header /> */}
-      <SideMenu/>
+      <SideMenu />
       <Outlet />
       {/* <RightSideMenu/> */}
+      <DiscordIcon />
       <Footer />
     </div>
   );
