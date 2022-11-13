@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 769px;
+  width: 887px;
   height: 100px;
   border: 1px solid #4140bf;
   border-radius: 20px;
@@ -37,6 +37,12 @@ export const FaContainer = styled.div`
       stroke: #4140bf;
       stroke-width: 50;
       color: transparent;
+    }
+  }
+  a {
+    color: inherit;
+    &:visited {
+      color: inherit;
     }
   }
 `;
