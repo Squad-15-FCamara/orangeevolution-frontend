@@ -28,12 +28,12 @@ export const statisticsService = {
         return response;
     },
 
-    getFavoritesCoursesByUser: async(userId) => {
+    getFavoriteCoursesByUser: async(userId) => {
         let response = await api.get(`statistics/favorites/courses/${userId}`);
         return response;
     },
 
-    deleteAllFavoritesCoursesByUser: async(userId) => {
+    deleteAllFavoriteCoursesByUser: async(userId) => {
         let response = await api.delete(`statistics/delete/${userId}`);
         return response;
     },
