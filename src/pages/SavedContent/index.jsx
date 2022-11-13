@@ -30,7 +30,7 @@ export function SavedContent() {
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {favThemes ? favThemes.map((item, index) => <ButtonS key={index} /*clicked={isclicked}*/ onClick={() => fetchCourses(item)} >{item}</ButtonS>) : <h1>non ecsiste</h1>}
+        {favThemes ? favThemes.map((item, index) => <ButtonS key={index} onClick={() => fetchCourses(item)} >{item}</ButtonS>) : <h1>non ecsiste</h1>}
       </FilterContainer>
       <ContainerTheme>
         {filtered ? filtered.map((card, index) => (
