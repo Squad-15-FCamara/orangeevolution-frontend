@@ -1,20 +1,25 @@
 import { Link } from 'react-router-dom';
-import { Button, Wrapper } from './style';
+import { Card } from '../../pages/Home/style';
+import { Wrapper } from './style';
+import DevCard from '../../assets/img/newDevCard.svg';
+import UxCard from '../../assets/img/newUxCard.svg';
+import QaCard from '../../assets/img/newQaCard.svg';
+import SoftCard from '../../assets/img/newSoftCard.svg';
 
 export function RoadCard() {
   return (
     <Wrapper>
       <Link to={'/roaddev/'}>
-        <Button imgRoad="url(./cardDev.svg)"></Button>
+        <Card src={DevCard} />
       </Link>
       <Link to={'/roadux/'}>
-        <Button imgRoad="url(./cardUx.svg)"></Button>
+        <Card src={UxCard} />
       </Link>
       <Link to={'/roadqa/'}>
-        <Button imgRoad="url(./cardQa.svg)"></Button>
+        <Card src={QaCard} />
       </Link>
       <Link to={'/roadsoft/'}>
-        <Button imgRoad="url(./cardSoft.svg)"></Button>
+        <Card src={SoftCard} />
       </Link>
     </Wrapper>
   );
