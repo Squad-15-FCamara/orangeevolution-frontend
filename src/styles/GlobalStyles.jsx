@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components";
-
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
  body {
@@ -8,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  background-color: #F4F4F9;
  }
 
  a {
@@ -25,4 +25,4 @@ export const GlobalStyles = createGlobalStyle`
      width: 12px;
      height: 12px;
 }
-`
+`;
