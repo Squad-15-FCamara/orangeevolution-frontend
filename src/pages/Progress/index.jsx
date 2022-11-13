@@ -13,24 +13,16 @@ export function Progress() {
   const [displayedCourses, setDisplayedCourses] = useState([]);
 
   useEffect(() => {
-    fetchingDoing();
-    fetchingDone();
-    setDisplayedCourses(doneCourses.concat(doingCourses));
+    fetchCourses();
   },[]);
 
-  const fetchingDoing = async () => {
+  const fetchCourses = async () => {
     try {
-      let response = await statisticsService.getDoingCoursesByUser(4);
-      setDoingCourse(response.data);
-    } catch (e) {
-      console.error('Ops! Encontramos um erro: ' + e);
-    }
-  };
-
-  const fetchingDone = async () => {
-    try {
-      let response = await statisticsService.getDoneCoursesByUser(4);
-      setDoneCourse(response.data);
+      let doingResponse = await statisticsService.getDoingCoursesByUser(4);
+      let doneResponse = await statisticsService.getDoneCoursesByUser(4);
+      setDoingCourse(doingResponse.data);
+      setDoneCourse(doneResponse.data);
+      setDisplayedCourses(doneCourses.concat(doingCourses));
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
@@ -41,7 +33,7 @@ export function Progress() {
       return setDisplayedCourses(doingCourses);
     } else if (status === "Concluídos") {
       return setDisplayedCourses(doneCourses);
-    }
+    } else return setDisplayedCourses(doneCourses.concat(doingCourses));
   }
 
   return (
