@@ -25,7 +25,8 @@ import {
   TextNotifica,
   TextPastas,
   TextProgression,
-  Modal
+  Modal,
+  InputDiv
 } from "./style";
 
   import { Link, useLocation } from 'react-router-dom';
@@ -33,20 +34,40 @@ import { useState } from "react";
 
 export const SideMenu = () => {
 
+  const [searchState, setSearchState] = useState({})
+  const [input, setInput] = useState({search: ''})
   const [isOpen, setIsOpen] = useState(false)
+
   let {pathname} = useLocation()
+
+
+  const UpdateInput = (e) =>{
+    const name = e.target.name;
+    const value = e.target.value;
+    setSearchState(input)
+    setInput({...input,
+      [name]: value
+  })
+    console.log(input)
+    console.log(searchState)
+  }
+
+
 
   return(
     <>
     <Wrapper>
       <Logo src={logo}/>
       <Menu>
-
           <Links>
-            <LinkStyledSearch>
-              <SearchIcon icon={faMagnifyingGlass} />
-              <Input placeholder='Buscar'/>
-            </LinkStyledSearch>
+            <InputDiv>
+              <LinkStyledSearch to='/search' state={{data: searchState}}>
+                <SearchIcon icon={faMagnifyingGlass} />
+              </LinkStyledSearch>
+              <Input type='text' placeholder='Buscar' name='search' value={input.search} onChange={UpdateInput}/>
+            </InputDiv>
+
+
             <HomeLinkStyled pathname={pathname} to='/'>
               <HomeIcon pathname={pathname} icon={faHouse}/>
               <TextHome pathname={pathname}>Home</TextHome>
