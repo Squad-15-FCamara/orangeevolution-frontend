@@ -14,9 +14,12 @@ import { Suggestions } from '../pages/Suggestions';
 import { Search } from '../pages/Search';
 import { Statistics } from '../pages/Statistics';
 import { NotFound } from '../pages/NotFound';
+import { ContextProvider } from '../context/context';
 
 export function AppRoutes() {
   return (
+    <ContextProvider>
+
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/" element={<DefaultLayout />}>
@@ -34,6 +37,9 @@ export function AppRoutes() {
         <Route path="statistics" element={<Statistics />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+
     </Routes>
+    </ContextProvider>
+
   );
 }

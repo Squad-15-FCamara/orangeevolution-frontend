@@ -38,25 +38,17 @@ import {
 
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { Context } from '../../context/context';
 
 export const SideMenu = () => {
-  const [input, setInput] = useState({});
+
   const [isOpen, setIsOpen] = useState(false);
 
   let { pathname } = useLocation();
 
-  const UpdateInput = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    setInput({
-      ...input,
-      [name]: value,
-    });
+  const { inputSearch, setInputSearch } = useContext(Context);
 
-    // console.log(input)
-  };
-
-  // state={{data: input}}
 
   return (
     <>
@@ -67,15 +59,15 @@ export const SideMenu = () => {
         <Menu>
           <Links>
             <InputDiv>
-              <LinkStyledSearch to={`search/${input}`}>
+              <LinkStyledSearch to='search'>
                 <SearchIcon icon={faMagnifyingGlass} />
               </LinkStyledSearch>
               <Input
                 type="text"
                 placeholder="Buscar"
-                name="search"
-                value={input.search}
-                onChange={(e) => setInput(e.target.value)}
+                value={inputSearch}
+                onChange={(e) => setInputSearch(e.target.value)}
+
               />
             </InputDiv>
 
@@ -96,7 +88,7 @@ export const SideMenu = () => {
               <TextProgression pathname={pathname}>Progresso</TextProgression>
             </ProgressionLinkStyled>
           </Links>
-          <Profile>
+        <Profile>
             <Link to="/profile">
               <Avatar src={avatar} />
             </Link>
@@ -106,9 +98,9 @@ export const SideMenu = () => {
             <Link onClick={() => setIsOpen(true)}>
               <LogOutIcon icon={faArrowRightFromBracket} />
             </Link>
-          </Profile>
-        </Menu>
-      </Wrapper>
+        </Profile>
+      </Menu>
+    </Wrapper>
       {isOpen && <Modal setIsOpen={setIsOpen} />}
     </>
   );
