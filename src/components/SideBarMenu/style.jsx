@@ -133,16 +133,16 @@ export const ProgressionLinkStyled = styled(Link)`
   margin-top: 16px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.pathname === '/profile' ? '#36357E' : 'white'};
+    props.pathname === '/progress' ? '#36357E' : 'white'};
 `;
 export const ProgressoIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => (props.pathname === '/profile' ? 'white' : '#36357E')};
+  color: ${(props) => (props.pathname === '/progress' ? 'white' : '#36357E')};
   padding-left: 29px;
   font-size: 25px;
 `;
 
 export const TextProgression = styled.p`
-  color: ${(props) => (props.pathname === '/profile' ? 'white' : '#36357E')};
+  color: ${(props) => (props.pathname === '/progress' ? 'white' : '#36357E')};
   list-style-type: none;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
