@@ -12,7 +12,7 @@ export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
   const [allRoads, setAllRoads] = useState([]);
-
+  // const [clicked, setClicked] = useState(false);
   useEffect(() => {
     fetchInitialCoursesState()
   }, []);
@@ -23,13 +23,13 @@ export function SavedContent() {
       // let roadsRes = await adminService.getAllroadsName();
       setAllFavCourses(response.data);
       setFavCourses(response.data);
-      // setAllThemes(roadsRes.data);
     } catch (e) {
-      console.error('Ops! Enconstramos um erro: ')
+      console.error('Ops! Encontramos um erro: ' + e.message)
     }
   }
 
-  const filterCourses = async (title) => {
+  const handleClick = async (title, clicked) => {
+    clicked === true;
     if (!favCourses) return console.error('não há cursos favoritos!');
     if (title === "Tudo") {
       return setFavCourses(allFavCourses);
@@ -43,7 +43,7 @@ export function SavedContent() {
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {ALL_ROADS.map((item, index) => <ButtonS key={index} onClick={() => filterCourses(item)} >{item}</ButtonS>)}
+        {ALL_ROADS.map((item, index) => <ButtonS key={index} clicked={item.clicked} onClick={() => handleClick(item.title, item.clicked)} >{item.title}</ButtonS>)}
       </FilterContainer>
       <ContainerTheme>
         {favCourses ? favCourses.map((card, index) => (
