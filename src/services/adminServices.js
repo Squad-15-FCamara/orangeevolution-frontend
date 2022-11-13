@@ -14,7 +14,7 @@ export const adminServices = {
     },
 
     getAllTypesName: async() => {
-        let response = api.get(`/adminServices/types/names`);
+        let response = api.get(`adminServices/types/names`);
         return response;
     },
 
