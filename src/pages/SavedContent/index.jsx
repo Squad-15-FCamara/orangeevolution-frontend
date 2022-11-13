@@ -5,31 +5,28 @@ import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
-import { adminStatistic } from '../../services/adminStatisticsService';
 import { adminService } from '../../services/adminService';
 import { ALL_ROADS } from './roads';
 
 export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
-  const [allThemes, setAllThemes] = useState([]);
+  const [allRoads, setAllRoads] = useState([]);
 
   useEffect(() => {
     fetchInitialCoursesState()
   }, []);
 
   const fetchInitialCoursesState = async () => {
-    let response = await statisticsService.getFavoriteCoursesByUser(4);
-    // let themesRes = await adminService.getAllThemesName();
-    setAllFavCourses(response.data);
-    setFavCourses(response.data);
-    setAllThemes(themesRes.data);
-
-    // tentativa de criar um SET de um array para filtrar automaticamente valores repetidos
-
-    // set = createSetByArr(response.data.idTheme);
-    // set.unshift('Tudo');
-    // console.log(set)
+    try {
+      let response = await statisticsService.getFavoriteCoursesByUser(4);
+      // let roadsRes = await adminService.getAllroadsName();
+      setAllFavCourses(response.data);
+      setFavCourses(response.data);
+      // setAllThemes(roadsRes.data);
+    } catch (e) {
+      console.error('Ops! Enconstramos um erro: ')
+    }
   }
 
   const filterCourses = async (title) => {
@@ -41,13 +38,6 @@ export function SavedContent() {
     setFavCourses(filteredContent);
   }
 
-  // funçao que cria um set a partir de um array
-
-  // const createSetByArr = (arr) => {
-  //   let newSet = [... new Set(arr)];
-  //   return newSet;
-  // }
-  
   return (
     <Wrapper>
       <PageTitle>Salvos</PageTitle>
