@@ -42,13 +42,11 @@ import { useContext } from 'react';
 import { Context } from '../../context/context';
 
 export const SideMenu = () => {
-
   const [isOpen, setIsOpen] = useState(false);
 
   let { pathname } = useLocation();
 
   const { inputSearch, setInputSearch } = useContext(Context);
-
 
   return (
     <>
@@ -59,7 +57,7 @@ export const SideMenu = () => {
         <Menu>
           <Links>
             <InputDiv>
-              <LinkStyledSearch to='search'>
+              <LinkStyledSearch to="search">
                 <SearchIcon icon={faMagnifyingGlass} />
               </LinkStyledSearch>
               <Input
@@ -67,7 +65,6 @@ export const SideMenu = () => {
                 placeholder="Buscar"
                 value={inputSearch}
                 onChange={(e) => setInputSearch(e.target.value)}
-
               />
             </InputDiv>
 
@@ -83,12 +80,12 @@ export const SideMenu = () => {
               <NotificaIcon pathname={pathname} icon={faBell} />
               <TextNotifica pathname={pathname}>Notificações</TextNotifica>
             </NotificaLinkStyled>
-            <ProgressionLinkStyled pathname={pathname} to="/profile">
+            <ProgressionLinkStyled pathname={pathname} to="/progress">
               <ProgressoIcon pathname={pathname} icon={faChartLine} />
               <TextProgression pathname={pathname}>Progresso</TextProgression>
             </ProgressionLinkStyled>
           </Links>
-        <Profile>
+          <Profile>
             <Link to="/profile">
               <Avatar src={avatar} />
             </Link>
@@ -98,9 +95,9 @@ export const SideMenu = () => {
             <Link onClick={() => setIsOpen(true)}>
               <LogOutIcon icon={faArrowRightFromBracket} />
             </Link>
-        </Profile>
-      </Menu>
-    </Wrapper>
+          </Profile>
+        </Menu>
+      </Wrapper>
       {isOpen && <Modal setIsOpen={setIsOpen} />}
     </>
   );
