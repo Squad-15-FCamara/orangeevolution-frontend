@@ -49,6 +49,8 @@ export function ContentIntro() {
             idRoad={card.idRoad}
             link={card.link}
             key={index}
+            description={card.description}
+            author={card.author}
           />
         ))}
       </ContainerTheme>
