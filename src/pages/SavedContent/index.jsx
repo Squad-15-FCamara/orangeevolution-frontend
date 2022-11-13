@@ -5,23 +5,32 @@ import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
+import { courseService } from '../../services/courseService'
 
 export function SavedContent() {
   const [filtered, setFiltered] = useState([]);
   const [favThemes, setFavThemes] = useState([]);
 
-  useEffect(async () => {
-    statisticsService.getFavoritesCoursesByUser(4);
-    let favs = statisticsService.getFavoritesCoursesByUser(4).idTheme;
-    setFavThemes(favs)
-  }, [])
+  useEffect(() => {
+    fetchInitialCoursesState()
+  }, []);
+
+  const fetchInitialCoursesState = async() => {
+    let response = await statisticsService.getFavoriteCoursesByUser(4);
+    setFiltered(response.data);
+    setFavThemes(response.data.idTheme);
+    favThemes.unshift('Tudo')
+    console.log(favThemes)
+  }
 
   const fetchCourses = async (title) => {
-    const response = await statisticsService.getFavoritesCoursesByUser(4);
-    if (title === "Tudo") {
+    // let response = await courseService.getAllCourses();
+    let response = await statisticsService.getFavoriteCoursesByUser(4);
+    if (title === "Tudo" || title === "") {
       return setFiltered(response.data);
     }
-    const filteredContent = response.data.filter(item => item.idTheme.toLowerCase().includes(title.toLowerCase()));
+    setFavThemes(response.data.idTheme);
+    const filteredContent = response.data.filter(item => item.idTheme.includes(title));
     setFiltered(filteredContent);
   }
 
@@ -44,7 +53,7 @@ export function SavedContent() {
             link={card.link}
             key={index}
           />
-        )) : <h1>foi mal brother.. sem conteúdo</h1>}
+        )) : <h1>Você ainda não tem curso salvo!</h1>}
       </ContainerTheme>
     </Wrapper>
   );
