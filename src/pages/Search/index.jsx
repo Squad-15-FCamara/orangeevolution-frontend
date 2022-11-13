@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ChosedRoadCard } from "../../components/ChosedRoadCard";
 import api from '../../services/api';
 import { Wrapper, Title } from "./style";
@@ -12,26 +12,29 @@ export function Search() {
   const location = useLocation()
   const data = location.state?.data.search;
 
-
+    const { search } = useParams()
     const [isLoading, setIsLoading] = useState(true);
 
 
   useEffect(()=>{
-    setSearchState(data)
-  },[data])
+    // setSearchState(data)
+    fetching()
+  },[])
 
 
-  useEffect(()=>{
-    if(searchState){
-      fetching()
-    }
-    setIsLoading(false)
-  },[searchState])
+  // useEffect(()=>{
+  //   if(searchState){
+  //     fetching()
+  //   }
+  //   setIsLoading(false)
+  // },[searchState])
+
+
 
 
   const fetching = async () => {
     const response = await api
-      .get(`/courses/titles/${searchState}`)
+      .get(`/courses/titles/${search}`)
       .then((response) => setFetchResults(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
@@ -53,9 +56,9 @@ export function Search() {
 
   return (
     <Wrapper>
-      <Title> Resultados da busca "{searchState}"</Title>
+      <Title> Resultados da busca "{search}"</Title>
       {console.log(fetchResults)}
-      {fetchResults.map((course)=>{
+      {search.map((course)=>{
         return <ChosedRoadCard title={course.title}/>
       })}
     </Wrapper>
