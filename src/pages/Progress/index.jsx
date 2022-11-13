@@ -23,7 +23,7 @@ export function Progress() {
       let doneResponse = await statisticsService.getDoneCoursesByUser(4);
       setDoingCourse(doingResponse.data);
       setDoneCourse(doneResponse.data);
-      setDisplayedCourses(doingCourses.concat(doneCourses));
+      setDisplayedCourses(doingResponse.data.concat(doneResponse.data));
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
