@@ -10,7 +10,6 @@ import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
 import { statisticsService } from '../../services/statisticsService';
 
-
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
 
@@ -28,28 +27,25 @@ export function ContentIntro() {
       });
   }
 
-
   function getFavorites() {
-    const ids = roadDev.map((course) => course.id)
-    const favoritesArray = ids.forEach((id)=> GetFavorite(id));
+    const ids = roadDev.map((course) => course.id);
+    const favoritesArray = ids.forEach((id) => GetFavorite(id));
     // const favoritesArray = await GetFavorite(ids)
     // setFavorites(favoritesArray.data.id);
   }
 
-  const GetFavorite = statisticsService.getFavoriteCoursesByUser
-
+  const GetFavorite = statisticsService.getFavoriteCoursesByUser;
 
   return (
     <Wrapper>
-
       <LinksContainer>
         <a href="home">Home</a>
         <FontAwesomeIcon icon={faChevronRight} />
         <a href="/roaddev">Dev Full Stack</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="#">Introdução</a>
+        <a href="#">Iniciando</a>
       </LinksContainer>
-      <Gradient>Introdução</Gradient>
+      <Gradient>Iniciando</Gradient>
       <Stats>xxx pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>
@@ -65,8 +61,6 @@ export function ContentIntro() {
             key={index}
             description={card.description}
             author={card.author}
-
-
           />
         ))}
       </ContainerTheme>
