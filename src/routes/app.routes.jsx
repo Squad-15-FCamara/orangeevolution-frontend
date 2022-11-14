@@ -23,6 +23,7 @@ import { RoadDevAdm } from '../pages/RoadDevAdm';
 import { RoadUxAdm } from '../pages/RoadUxAdm';
 import { RoadQaAdm } from '../pages/RoadQaAdm';
 import { RoadSoftAdm } from '../pages/RoadSoftAdm';
+import { SearchAdm } from '../pages/SearchAdm';
 
 export function AppRoutes() {
   return (
@@ -52,6 +53,7 @@ export function AppRoutes() {
           <Route path="/roadsoftadm" element={<RoadSoftAdm />} />
           <Route path="/statisticsadm" element={<StatisticsAdm />} />
           <Route path="/profileadm" element={<ProfileAdm />} />
+          <Route path="/searchadm" element={<SearchAdm />} />
         </Route>
       </Routes>
     </ContextProvider>
