@@ -8,10 +8,8 @@ import { SideMenu } from '../components/SideBarMenu/SideMenu';
 export function DefaultLayout() {
   return (
     <div>
-      {/* <Header /> */}
       <SideMenu />
       <Outlet />
-      {/* <RightSideMenu/> */}
       <DiscordIcon />
       <Footer />
     </div>
