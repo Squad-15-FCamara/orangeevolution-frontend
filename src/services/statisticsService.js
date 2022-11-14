@@ -2,7 +2,7 @@ import api from "./api";
 
 export const statisticsService = {
 
-    // MÉTODOS DE INTERAÇÃO COM CURSO (ADICIONAR E DELETAR 'curso favorito','curso em andamento' e 'curso concluído')
+    // MÉTODOS DE INTERAÇÃO COM CURSO (ADICIONAR, DELETAR E BUSCAR 'curso favorito','curso em andamento' e 'curso concluído')
     addDoingCourse: async(userId, courseId) => {
         let response = await api.get(`statistics/doing/${userId}/${courseId}`);
         return response;
@@ -39,7 +39,17 @@ export const statisticsService = {
     },
 
     deleteFavoriteCourse: async(userId, courseId) => {
-        let response = await api.delete(`statistics/delete/${userId}/${courseId}`);
+        let response = await api.delete(`statistics/delete/favortes/${userId}/${courseId}`);
+        return response;
+    },
+
+    deleteUserDoingCourse: async(userId, courseId) => {
+        let response = await api.get(`statistics/delete/doing/${userId}/${courseId}`);
+        return response;
+    },
+
+    deleteUserDoneCourse: async(userId, courseId) => {
+        let response = await api.get(`statistics/delete/done/${userId}/${courseId}`);
         return response;
     }
 
