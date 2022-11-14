@@ -75,10 +75,10 @@ export function ChosedRoadCard({
           >
             <FontAwesomeIcon
               id="changeColor"
-              icon={isFavorite ? faBookmark : faBookBookmark}
+              icon={faBookmark}
               fa-3x="true"
               size="2x"
-              isFavorite={isFavorite}
+              color={isFavorite ? '#36357E' : 'white'}
             />
           </button>
         </FaContainer>

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import styled from 'styled-components';
 
@@ -37,7 +37,7 @@ export const FaContainer = styled.div`
     border: none;
     background-color: transparent;
     &:nth-child(1) {
-      stroke: #4140bf;
+      stroke: #36357e;
       stroke-width: 50;
       color: transparent;
     }
@@ -94,14 +94,13 @@ export const Back = styled(FontAwesomeIcon)`
   height: 30px;
   cursor: pointer;
   transition: 0.2s;
-  :hover{
-    transform: scale(1.2)
+  :hover {
+    transform: scale(1.2);
   }
-`
+`;
 export const TitleCourse = styled.h3`
   font-size: 20px;
   font-weight: 500;
-
 `;
 
 export const Tags = styled.div`
@@ -122,8 +121,7 @@ export const Tag = styled.span`
 export const TagAuthor = styled(Tag)`
   background-color: orange;
   color: white;
-
-`
+`;
 export const Time = styled.span`
   padding-top: 8px;
 `;
@@ -132,7 +130,7 @@ export const Description = styled.p``;
 export const Button = styled.a`
   width: 100%;
   height: 48px;
-  background-color: #36357E;
+  background-color: #36357e;
   color: white;
   display: flex;
   align-items: center;
@@ -150,7 +148,7 @@ export const Status = styled.div`
 
 export const StatusTitle = styled.h4`
   font-size: 20px;
-`
+`;
 export const DoingProgress = styled.div`
   height: 36px;
   border: 1px solid gray;
@@ -168,13 +166,11 @@ export const CheckBoxDoing = styled.input`
   height: 20px;
 `;
 
-export const DoneProgress = styled(DoingProgress)`
-`;
+export const DoneProgress = styled(DoingProgress)``;
 export const CheckBoxDone = styled.input`
-   cursor: pointer;
+  cursor: pointer;
   width: 40px;
   height: 20px;
-
 `;
 export const Text = styled.span``;
 
@@ -191,10 +187,12 @@ export const ModalContentCard = ({
   setIsDone,
 }) => {
   return (
-
     <WrapperModal>
-       <WrapperContent>
-        <Header><Back icon={faArrowLeft} onClick={()=> setIsOpen(false)} /> Informações</Header>
+      <WrapperContent>
+        <Header>
+          <Back icon={faArrowLeft} onClick={() => setIsOpen(false)} />{' '}
+          Informações
+        </Header>
         <TitleCourse>{title}</TitleCourse>
         <Tags>
           <TagAuthor>{author}</TagAuthor>
@@ -203,7 +201,9 @@ export const ModalContentCard = ({
         </Tags>
         <Time>{time} min</Time>
         <Description>{description}</Description>
-        <Button target="_blank" href={link}>Acessar </Button>
+        <Button target="_blank" href={link}>
+          Acessar{' '}
+        </Button>
         <Status>
           <StatusTitle>Status</StatusTitle>
           <DoingProgress>
@@ -218,6 +218,5 @@ export const ModalContentCard = ({
         </Status>
       </WrapperContent>
     </WrapperModal>
-
   );
 };
