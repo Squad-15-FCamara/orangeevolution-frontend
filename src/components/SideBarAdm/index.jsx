@@ -53,7 +53,7 @@ export const SideBarAdm = () => {
         <Menu>
           <Links>
             <InputDiv>
-              <LinkStyledSearch to="search">
+              <LinkStyledSearch to="searchadm">
                 <SearchIcon icon={faMagnifyingGlass} />
               </LinkStyledSearch>
               <Input
