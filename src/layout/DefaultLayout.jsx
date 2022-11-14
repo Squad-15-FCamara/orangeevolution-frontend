@@ -6,6 +6,7 @@ import { DiscordIcon } from '../components/Discord';
 import { Footer } from '../components/Footer';
 import { RightSideMenu } from '../components/RightSideMenu';
 import { SideMenu } from '../components/SideBarMenu/SideMenu';
+import { TopMobileMenu } from '../components/TopMobileMenu';
 
 export function DefaultLayout() {
   return (
@@ -13,6 +14,8 @@ export function DefaultLayout() {
       <Media query="(max-width: 900px)" render={() => <BottomMobileMenu />} />
 
       <Media query="(min-width: 900px)" render={() => <SideMenu />} />
+
+      <Media query="(max-width: 900px)" render={() => <TopMobileMenu />} />
 
       <Media query="(min-width: 900px)" render={() => <DiscordIcon />} />
 
