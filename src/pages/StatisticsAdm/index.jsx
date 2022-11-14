@@ -1,22 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import { Wrapper } from '../Home/style';
 import { ContainerTheme, LinksContainer, Stats } from '../RoadDev/style';
 import { PageTitle } from '../SavedContent/style';
 import { InfoContainer } from './style';
 import { useEffect, useState } from 'react';
-import { adminService } from '../../services/adminService';
 import { RoadStatistics } from '../../components/RoadStatistics';
+import { adminStatistic } from '../../services/adminStatisticsService';
 
 export function StatisticsAdm() {
-  const [getTheme, setGetTheme] = useState([]);
+  const [getStats, setGetStats] = useState([]);
 
   useEffect(() => {
-    fetchThemes();
+    fetchStats();
   }, []);
 
-  const fetchThemes = async () => {
+  const fetchStats = async () => {
     try {
-      let response = await adminService.getAllThemesName();
-      setGetTheme(response.data);
+      let response = await adminStatistic.usersStatsByRoad('FullStack');
+      setGetStats(response.data);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
@@ -26,11 +29,13 @@ export function StatisticsAdm() {
     <Wrapper>
       <LinksContainer>
         <a href="#">Trilhas</a>
+        <FontAwesomeIcon icon={faChevronRight} />
+        <a href="#">Temas</a>
       </LinksContainer>
       <PageTitle>Estatísticas</PageTitle>
       <Stats>Confira aqui as estatísticas de acesso</Stats>
       <InfoContainer>
-        <h2>Trilha</h2>
+        <h2>Tema</h2>
         <span>|</span>
         <h2>Acessos</h2>
         <span>|</span>
@@ -39,8 +44,14 @@ export function StatisticsAdm() {
         <h2>Não Acessado</h2>
       </InfoContainer>
       <ContainerTheme>
-        {getTheme.map((theme, index) => (
-          <RoadStatistics theme={theme} key={index} />
+        {getStats.map((card, index) => (
+          <RoadStatistics
+            name={card.name}
+            doing={card.doing}
+            done={card.done}
+            didnt={card.didnt}
+            key={index}
+          />
         ))}
       </ContainerTheme>
     </Wrapper>
