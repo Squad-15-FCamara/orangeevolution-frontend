@@ -81,7 +81,10 @@ export const Login = () => {
           </Span>
           <Button type="submit"> Entrar </Button>
           <SpanWithLine> ou </SpanWithLine>
-          <Button type="submit"> Entrar como Administrador </Button>
+          <Button onClick={() => navigate('homeadm')}>
+            {' '}
+            Entrar como Administrador{' '}
+          </Button>
 
           <SpanCadastro>
             Ainda não é membro? <Cadastro>Cadastre-se</Cadastro>
