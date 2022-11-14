@@ -8,12 +8,15 @@ import { Wrapper } from '../Home/style';
 import { Gradient, LinksContainer, Stats, Themes } from './style';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
+import { statisticsService } from '../../services/statisticsService';
+
 
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
 
   useEffect(() => {
     getCourses();
+    getFavorites();
   }, []);
 
   async function getCourses() {
@@ -23,11 +26,22 @@ export function ContentIntro() {
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
-    [];
   }
+
+
+  function getFavorites() {
+    const ids = roadDev.map((course) => course.id)
+    const favoritesArray = ids.forEach((id)=> GetFavorite(id));
+    // const favoritesArray = await GetFavorite(ids)
+    // setFavorites(favoritesArray.data.id);
+  }
+
+  const GetFavorite = statisticsService.getFavoriteCoursesByUser
+
 
   return (
     <Wrapper>
+
       <LinksContainer>
         <a href="home">Home</a>
         <FontAwesomeIcon icon={faChevronRight} />
@@ -51,6 +65,8 @@ export function ContentIntro() {
             key={index}
             description={card.description}
             author={card.author}
+
+
           />
         ))}
       </ContainerTheme>
