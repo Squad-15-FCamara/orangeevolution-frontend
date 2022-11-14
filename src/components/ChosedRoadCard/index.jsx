@@ -40,27 +40,36 @@ export function ChosedRoadCard({
   const [isFavorite, setIsFavorite] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const SetFavorite = statisticsService.addAFavoriteCourse;
-
   useEffect(() => {
     getFavorites(`${id}`);
-    console.log(isFavorite);
+    // console.log(isFavorite);
   }, []);
 
+  let favExists;
+
   useEffect(() => {
-    const favExists = favorites.some((fav) => fav.id == `${id}`);
+    favExists = favorites.some((fav) => fav.id == `${id}`);
+    console.log(`o ${id} card é favorito?? R: ` + favExists)
     setIsFavorite(favExists);
-    console.log(favorites);
   }, [favorites]);
+
+  let handleFav = () => {}
 
   const getFavorites = async (id) => {
     const res = await statisticsService.getFavoriteCoursesByUser(4);
     setFavorites(res.data);
   };
 
-  const CheckFavorite = async (id) => {
-    await SetFavorite(4, `${id}`);
-    setIsFavorite(true);
+  const CheckFavorite = async (id, favExists) => {
+    console.log(favExists)
+    if (!favExists) {
+      handleFav = statisticsService.addAFavoriteCourse;
+    } else {
+      handleFav = statisticsService.deleteFavoriteCourse;
+    }
+    await handleFav(4, `${id}`);
+    console.log(favExists)
+    setIsFavorite(!favExists);
   };
 
   return (
@@ -70,7 +79,7 @@ export function ChosedRoadCard({
         <FaContainer>
           <button
             onClick={
-              () => CheckFavorite(`${id}`) /* () => SetFavorite(4, `${id}`) */
+              () => CheckFavorite(id, favExists) /* () => SetFavorite(4, `${id}`) */
             }
           >
             <FontAwesomeIcon
