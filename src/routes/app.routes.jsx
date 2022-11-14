@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { DefaultLayout } from '../layout/DefaultLayout';
+import { DefaultAdm } from '../layout/DefaultAdm';
+import { HomeAdm } from '../pages/HomeAdm';
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Profile } from '../pages/Profile';
@@ -15,6 +17,12 @@ import { Search } from '../pages/Search';
 import { Statistics } from '../pages/Statistics';
 import { NotFound } from '../pages/NotFound';
 import { ContextProvider } from '../context/context';
+import { StatisticsAdm } from '../pages/StatisticsAdm';
+import { ProfileAdm } from '../pages/ProfileAdm';
+import { RoadDevAdm } from '../pages/RoadDevAdm';
+import { RoadUxAdm } from '../pages/RoadUxAdm';
+import { RoadQaAdm } from '../pages/RoadQaAdm';
+import { RoadSoftAdm } from '../pages/RoadSoftAdm';
 
 export function AppRoutes() {
   return (
@@ -35,6 +43,15 @@ export function AppRoutes() {
           <Route path="search" element={<Search />} />
           <Route path="statistics" element={<Statistics />} />
           <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/" element={<DefaultAdm />}>
+          <Route path="/homeadm" element={<HomeAdm />} />
+          <Route path="/roaddevadm" element={<RoadDevAdm />} />
+          <Route path="/roaduxadm" element={<RoadUxAdm />} />
+          <Route path="/roadqaadm" element={<RoadQaAdm />} />
+          <Route path="/roadsoftadm" element={<RoadSoftAdm />} />
+          <Route path="/statisticsadm" element={<StatisticsAdm />} />
+          <Route path="/profileadm" element={<ProfileAdm />} />
         </Route>
       </Routes>
     </ContextProvider>
