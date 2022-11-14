@@ -24,6 +24,10 @@ export const Wrapper = styled.div`
   padding-bottom: 200px;
   max-width: 1205px;
   width: 100%;
+
+  @media screen and (max-width: 900px) {
+    padding-left: 50px;
+  }
 `;
 
 export const Cards = styled.div`
