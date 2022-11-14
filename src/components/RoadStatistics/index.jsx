@@ -5,24 +5,18 @@ import {
   Container,
   LeftBar,
   TextContainer,
-  Theme,
 } from '../../components/RoadTheme/style';
+import { Theme } from './style';
 
-export function RoadStatistics({
-  theme,
-  access,
-  concluded,
-  notAccessed,
-  link,
-}) {
+export function RoadStatistics({ name, doing, done, didnt, link }) {
   return (
     <Container>
       <LeftBar />
       <TextContainer>
-        <Theme>{theme}</Theme>
-        <Theme>{access}</Theme>
-        <Theme>{concluded}</Theme>
-        <Theme>{notAccessed}</Theme>
+        <Theme>{name}</Theme>
+        <Theme>{doing}</Theme>
+        <Theme>{done}</Theme>
+        <Theme>{didnt}</Theme>
         <a href={link}>
           <FontAwesomeIcon icon={faChevronRight} size="xl" />
         </a>
