@@ -26,7 +26,7 @@ export function RoadDev() {
       });
   }, []);
 
-  const theme1 = { theme: 'Introdução', link: '/contentintro' };
+  const theme1 = { theme: 'Iniciando', link: '/contentintro' };
   const theme2 = { theme: 'Full Stack', link: '/contentfull' };
 
   return (
