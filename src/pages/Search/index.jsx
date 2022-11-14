@@ -5,6 +5,7 @@ import { Context } from '../../context/context';
 import api from '../../services/api';
 import { ContainerTheme } from '../RoadDev/style';
 import { Wrapper, Title } from './style';
+import { courseService } from '../../services/courseService'
 
 export function Search() {
   const [fetchResults, setFetchResults] = useState([]);
@@ -24,14 +25,12 @@ export function Search() {
   }, [inputSearch]);
 
   const fetching = async () => {
-    const response = await api
-      .get(`/courses/titles/${inputSearch}`)
-      .then((response) => setFetchResults(response.data))
-      .catch((err) => {
-        console.error('ops! ocorreu um erro' + err);
-      });
-
-    return response;
+    try {
+      let response = await courseService.getCourseByTitle(inputSearch);
+      setFetchResults(response.data);
+    } catch (e) {
+      console.error('Ops! Ocorreu um erro: ' + e)
+    }
   };
 
   if (isLoading) {
