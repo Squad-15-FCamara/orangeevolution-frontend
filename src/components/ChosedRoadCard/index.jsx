@@ -49,7 +49,6 @@ export function ChosedRoadCard({
 
   useEffect(() => {
     favExists = favorites.some((fav) => fav.id == `${id}`);
-    console.log(`o ${id} card é favorito?? R: ` + favExists)
     setIsFavorite(favExists);
   }, [favorites]);
 
@@ -62,6 +61,9 @@ export function ChosedRoadCard({
 
   const CheckFavorite = async (id, favExists) => {
     console.log(favExists)
+    if (favExists === undefined) {
+      favExists === true;
+    }
     if (!favExists) {
       handleFav = statisticsService.addAFavoriteCourse;
     } else {
