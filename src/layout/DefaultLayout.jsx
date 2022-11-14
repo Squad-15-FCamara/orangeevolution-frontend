@@ -9,7 +9,7 @@ import { SideMenu } from '../components/SideBarMenu/SideMenu';
 
 export function DefaultLayout() {
   return (
-    <div>
+    <>
       <Media query="(max-width: 900px)" render={() => <BottomMobileMenu />} />
 
       <Media query="(min-width: 900px)" render={() => <SideMenu />} />
@@ -19,6 +19,6 @@ export function DefaultLayout() {
       <Outlet />
 
       <Media query="(min-width: 900px)" render={() => <Footer />} />
-    </div>
+    </>
   );
 }
