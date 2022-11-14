@@ -51,6 +51,7 @@ export function StatisticsAdm() {
             done={card.done}
             didnt={card.didnt}
             key={index}
+            link={index}
           />
         ))}
       </ContainerTheme>
