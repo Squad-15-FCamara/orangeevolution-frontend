@@ -14,7 +14,6 @@ import { ContentFull } from '../pages/ContentFull';
 import { SavedContent } from '../pages/SavedContent';
 import { Progress } from '../pages/Progress';
 import { Search } from '../pages/Search';
-import { Statistics } from '../pages/Statistics';
 import { NotFound } from '../pages/NotFound';
 import { ContextProvider } from '../context/context';
 import { StatisticsAdm } from '../pages/StatisticsAdm';
@@ -24,6 +23,7 @@ import { RoadUxAdm } from '../pages/RoadUxAdm';
 import { RoadQaAdm } from '../pages/RoadQaAdm';
 import { RoadSoftAdm } from '../pages/RoadSoftAdm';
 import { SearchAdm } from '../pages/SearchAdm';
+import { IntroStatistics } from '../pages/IntroStatistics';
 
 export function AppRoutes() {
   return (
@@ -42,7 +42,6 @@ export function AppRoutes() {
           <Route path="savedcontent" element={<SavedContent />} />
           <Route path="progress" element={<Progress />} />
           <Route path="search" element={<Search />} />
-          <Route path="statistics" element={<Statistics />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<DefaultAdm />}>
@@ -54,6 +53,7 @@ export function AppRoutes() {
           <Route path="/statisticsadm" element={<StatisticsAdm />} />
           <Route path="/profileadm" element={<ProfileAdm />} />
           <Route path="/searchadm" element={<SearchAdm />} />
+          <Route path="/introstatistics" element={<IntroStatistics />} />
         </Route>
       </Routes>
     </ContextProvider>
