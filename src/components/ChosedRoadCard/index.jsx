@@ -59,19 +59,14 @@ export function ChosedRoadCard({
     setFavorites(res.data);
   };
 
-  const CheckFavorite = async (id, favExists) => {
-    console.log(favExists)
-    if (favExists === undefined) {
-      favExists === true;
-    }
-    if (!favExists) {
+  const CheckFavorite = async (id, isFav) => {
+    if (!isFav) {
       handleFav = statisticsService.addAFavoriteCourse;
     } else {
       handleFav = statisticsService.deleteFavoriteCourse;
     }
     await handleFav(4, `${id}`);
-    console.log(favExists)
-    setIsFavorite(!favExists);
+    setIsFavorite(!isFav);
   };
 
   return (
@@ -81,7 +76,7 @@ export function ChosedRoadCard({
         <FaContainer>
           <button
             onClick={
-              () => CheckFavorite(id, favExists) /* () => SetFavorite(4, `${id}`) */
+              () => CheckFavorite(id, isFavorite) /* () => SetFavorite(4, `${id}`) */
             }
           >
             <FontAwesomeIcon
