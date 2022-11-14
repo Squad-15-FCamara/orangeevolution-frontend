@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { Context } from '../../context/context';
 import api from '../../services/api';
