@@ -24,6 +24,7 @@ import { RoadQaAdm } from '../pages/RoadQaAdm';
 import { RoadSoftAdm } from '../pages/RoadSoftAdm';
 import { SearchAdm } from '../pages/SearchAdm';
 import { IntroStatistics } from '../pages/IntroStatistics';
+import { FullStatistics } from '../pages/FullStatistics';
 
 export function AppRoutes() {
   return (
@@ -53,7 +54,8 @@ export function AppRoutes() {
           <Route path="/statisticsadm" element={<StatisticsAdm />} />
           <Route path="/profileadm" element={<ProfileAdm />} />
           <Route path="/searchadm" element={<SearchAdm />} />
-          <Route path="/introstatistics" element={<IntroStatistics />} />
+          <Route path="/0" element={<IntroStatistics />} />
+          <Route path="/1" element={<FullStatistics />} />
         </Route>
       </Routes>
     </ContextProvider>
