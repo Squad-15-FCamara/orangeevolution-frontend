@@ -48,6 +48,7 @@ export function Progress() {
       <ContainerTheme>
         {displayedCourses.map((card, index) => (
           <ChosedRoadCard
+            id={card.id}
             title={card.title}
             idType={card.idType}
             time={card.time}

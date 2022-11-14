@@ -70,6 +70,7 @@ export function Search() {
         {fetchResults.map((course, index) => {
           return (
             <ChosedRoadCard
+              id={course.id}
               title={course.title}
               idType={course.idType}
               time={course.time}
