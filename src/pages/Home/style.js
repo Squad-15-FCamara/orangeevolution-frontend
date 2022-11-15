@@ -60,7 +60,9 @@ export const Cards = styled.div`
   flex-wrap: wrap;
   height: 350px;
   width: 95%;
-  padding-left: 5%;
+  @media screen and (max-width: 900px) {
+    padding-left: 5%;
+  }
 `;
 
 export const CardsNews = styled(Cards)`
