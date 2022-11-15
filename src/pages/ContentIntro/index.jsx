@@ -12,11 +12,13 @@ import { statisticsService } from '../../services/statisticsService';
 import { adminStatistic } from '../../services/adminStatisticsService';
 import { useContext } from 'react';
 import { favContext } from '../../context/favoritesContext';
+import { Loading } from '../../components/Loading';
 
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
   const [themeCounter, setThemeCounter] = useState([]);
   const { favorites } = useContext(favContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getCourses();
@@ -37,6 +39,7 @@ export function ContentIntro() {
     await api
       .get('/courses/themes/iniciando')
       .then((response) => setRoadDev(response.data))
+      .then(() => setIsLoading(false))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
@@ -64,21 +67,25 @@ export function ContentIntro() {
       <Stats>{themeCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>
-        {roadDev.map((card, index) => (
-          <ChosedRoadCard
-            id={card.id}
-            title={card.title}
-            idType={card.idType}
-            time={card.time}
-            idTheme={card.idTheme}
-            idRoad={card.idRoad}
-            link={card.link}
-            key={index}
-            description={card.description}
-            author={card.author}
-            arrFav={favorites}
-          />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          roadDev.map((card, index) => (
+            <ChosedRoadCard
+              id={card.id}
+              title={card.title}
+              idType={card.idType}
+              time={card.time}
+              idTheme={card.idTheme}
+              idRoad={card.idRoad}
+              link={card.link}
+              key={index}
+              description={card.description}
+              author={card.author}
+              arrFav={favorites}
+            />
+          ))
+        )}
       </ContainerTheme>
     </Wrapper>
   );
