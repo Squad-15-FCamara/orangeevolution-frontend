@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../ContentIntro/style';
 import { Wrapper } from '../Home/style';
@@ -7,12 +7,14 @@ import { ButtonS, FilterContainer, PageTitle } from './style';
 import { statisticsService } from '../../services/statisticsService';
 import { adminService } from '../../services/adminService';
 import { ALL_ROADS } from './roads';
+import { favContext } from '../../context/favoritesContext';
 
 export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
   const [allFavCourses, setAllFavCourses] = useState([]);
   const [allRoads, setAllRoads] = useState([]);
   const [clicked, setClicked] = useState('Tudo');
+  const { favorites } = useContext(favContext);
   
   useEffect(() => {
     fetchInitialCoursesState()
@@ -56,6 +58,7 @@ export function SavedContent() {
             idRoad={card.idRoad}
             link={card.link}
             key={index}
+            arrFav={favorites ? favorites : console.log('tem nada aqui nao chefe kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')}
           />
         )) : <h1>Você ainda não tem curso salvo!</h1>}
       </ContainerTheme>

@@ -2,14 +2,15 @@ import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { Context } from '../../context/context';
-import api from '../../services/api';
 import { ContainerTheme } from '../RoadDev/style';
 import { Wrapper, Title } from './style';
 import { courseService } from '../../services/courseService';
+import { favContext } from '../../context/favoritesContext';
 
 export function Search() {
   const [fetchResults, setFetchResults] = useState([]);
   const { inputSearch } = useContext(Context);
+  const { favorites } = useContext(favContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -71,6 +72,7 @@ export function Search() {
               idRoad={course.idRoad}
               link={course.link}
               key={index}
+              arrFav={favorites}
             />
           );
         })}
