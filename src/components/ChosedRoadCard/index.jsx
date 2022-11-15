@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
-  faBookmark,
-  faBookBookmark,
+  faBookmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -35,14 +34,15 @@ export function ChosedRoadCard({
   link,
   author,
   description,
+  arrFav
 }) {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    getFavorites(`${id}`);
-    // console.log(isFavorite);
+    setFavorites(arrFav);
+    console.log(arrFav)
   }, []);
 
   let favExists;
@@ -53,11 +53,6 @@ export function ChosedRoadCard({
   }, [favorites]);
 
   let handleFav = () => {};
-
-  const getFavorites = async (id) => {
-    const res = await statisticsService.getFavoriteCoursesByUser(4);
-    setFavorites(res.data);
-  };
 
   const CheckFavorite = async (id, isFav) => {
     if (!isFav) {
@@ -80,7 +75,7 @@ export function ChosedRoadCard({
                 CheckFavorite(
                   id,
                   isFavorite,
-                ) /* () => SetFavorite(4, `${id}`) */
+                )
             }
           >
             <FontAwesomeIcon
@@ -102,7 +97,7 @@ export function ChosedRoadCard({
           <Road>{idRoad}</Road>
         </TextContainer>
         <FaContainer idRoad={idRoad}>
-          <a /* target="_blank" href={link} */ onClick={() => setIsOpen(true)}>
+          <a onClick={() => setIsOpen(true)}>
             <FontAwesomeIcon icon={faChevronRight} size="xl" />
           </a>
         </FaContainer>
