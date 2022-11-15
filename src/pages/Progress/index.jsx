@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../ContentIntro/style';
 import { Wrapper } from '../Home/style';
@@ -6,12 +6,14 @@ import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from '../SavedContent/style';
 import { statisticsService } from '../../services/statisticsService';
 import { COURSE_STATUS } from './courseStatus';
+import { favContext } from '../../context/favoritesContext';
 
 export function Progress() {
   const [doingCourses, setDoingCourse] = useState([]);
   const [doneCourses, setDoneCourse] = useState([]);
   const [displayedCourses, setDisplayedCourses] = useState([]);
   const [clicked, setClicked] = useState('Tudo');
+  const { favorites } = useContext(favContext);
 
   useEffect(() => {
     fetchCourses();
@@ -56,6 +58,7 @@ export function Progress() {
             idRoad={card.idRoad}
             link={card.link}
             key={index}
+            arrFav={favorites}
           />
         ))}
       </ContainerTheme>
