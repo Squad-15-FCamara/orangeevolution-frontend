@@ -110,12 +110,28 @@ export const WrapperContent = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 30px 0px 0px 30px;
+
+  @media screen and (max-width: 900px) {
+    height: 75%;
+    max-width: 250px;
+    /* min-height: 500px; */
+    padding: 0px 15px;
+  }
 `;
 
 export const Header = styled.h1`
   font-size: 32px;
   font-weight: 800;
   margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
 `;
 
 export const Back = styled(FontAwesomeIcon)`
@@ -126,10 +142,18 @@ export const Back = styled(FontAwesomeIcon)`
   :hover {
     transform: scale(1.2);
   }
+
+  @media screen and (max-width: 900px) {
+    width: 15px;
+  }
 `;
 export const TitleCourse = styled.h3`
   font-size: 20px;
   font-weight: 500;
+
+  @media screen and (max-width: 900px) {
+    font-size: 15px;
+  }
 `;
 
 export const Tags = styled.div`
@@ -145,6 +169,10 @@ export const Tag = styled.span`
   padding: 4px 6px;
   font-weight: 600;
   border-radius: 4px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 10px;
+  }
 `;
 
 export const TagAuthor = styled(Tag)`
@@ -153,8 +181,16 @@ export const TagAuthor = styled(Tag)`
 `;
 export const Time = styled.span`
   padding-top: 8px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+  }
 `;
-export const Description = styled.p``;
+export const Description = styled.p`
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+  }
+`;
 
 export const Button = styled.a`
   width: 100%;
@@ -166,6 +202,11 @@ export const Button = styled.a`
   justify-content: center;
   border-radius: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 900px) {
+    height: 30px;
+    font-size: 14px;
+  }
 `;
 
 export const Status = styled.div`
@@ -173,10 +214,21 @@ export const Status = styled.div`
   flex-direction: column;
   padding-top: 50px;
   gap: 16px;
+
+  @media screen and (max-width: 900px) {
+    padding-top: 0px;
+    gap: 8px;
+  }
 `;
 
 export const StatusTitle = styled.h4`
   font-size: 20px;
+
+  @media screen and (max-width: 900px) {
+    font-size: 14px;
+    padding-top: 15px;
+    margin: 0;
+  }
 `;
 export const DoingProgress = styled.div`
   height: 36px;
@@ -187,12 +239,21 @@ export const DoingProgress = styled.div`
   justify-content: space-between;
   padding: 8px;
   padding-left: 15px;
+
+  @media screen and (max-width: 900px) {
+    padding: 2px;
+    height: 25px;
+  }
 `;
 
 export const CheckBoxDoing = styled.input`
   cursor: pointer;
   width: 40px;
   height: 20px;
+
+  @media screen and (max-width: 900px) {
+    height: 18px;
+  }
 `;
 
 export const DoneProgress = styled(DoingProgress)``;
@@ -200,8 +261,17 @@ export const CheckBoxDone = styled.input`
   cursor: pointer;
   width: 40px;
   height: 20px;
+
+  @media screen and (max-width: 900px) {
+    height: 18px;
+  }
 `;
-export const Text = styled.span``;
+export const Text = styled.span`
+  @media screen and (max-width: 900px) {
+    font-size: 12px;
+    padding-left: 5px;
+  }
+`;
 
 export const ModalContentCard = ({
   id,
@@ -216,12 +286,12 @@ export const ModalContentCard = ({
 }) => {
   const [doingCheck, setDoingCheck] = useState(false);
   const [doneCheck, setDoneCheck] = useState(false);
+  const [IsSaved, SetIsSaved] = useState(false);
 
   const handleChange = (event) => {
     event.target.name === 'doing'
       ? setDoingCheck(!doingCheck)
       : setDoneCheck(!doneCheck);
-    console.log(id + ' FAZENO: ' + doingCheck + ' JA FEIZ ' + doneCheck);
   };
 
   const saveDoingCourse = (id) => statisticsService.addDoingCourse(4, id);
@@ -231,16 +301,26 @@ export const ModalContentCard = ({
     console.log(courseId);
     if (doingCheck && !doneCheck) {
       let response = await saveDoingCourse(courseId);
+      response.status === 200 && SetIsSaved(true);
       return console.log(response.status);
     } else if (!doingCheck && doneCheck) {
       let response = await saveDoneCourse(courseId);
+      response.status === 200 && SetIsSaved(true);
       return console.log(response.status);
-    } else return alert('deu nao paizao....');
+    } else return SetIsSaved(true);
   };
 
   return (
     <WrapperModal>
       <WrapperContent>
+        {IsSaved && (
+          <ModalSaved
+            SetIsSaved={SetIsSaved}
+            doingCheck={doingCheck}
+            doneCheck={doneCheck}
+            setIsOpen={setIsOpen}
+          />
+        )}
         <Header>
           <Back icon={faArrowLeft} onClick={() => setIsOpen(false)} />{' '}
           Informações
@@ -272,6 +352,46 @@ export const ModalContentCard = ({
           </DoneProgress>
           <Button onClick={() => saveCourse(id)}> Salvar </Button>
         </Status>
+      </WrapperContent>
+    </WrapperModal>
+  );
+};
+
+export const Error = styled.div``;
+export const BodyModal = styled.p``;
+
+export const TitleModal = styled.h3``;
+
+export const ButtonOk = styled.button``;
+export const Success = styled.div``;
+
+export const ModalSaved = ({
+  SetIsSaved,
+  doingCheck,
+  doneCheck,
+  setIsOpen = { setIsOpen },
+}) => {
+  const savedAndClose = () => {
+    setIsOpen(false);
+    SetIsSaved(false);
+  };
+
+  return (
+    <WrapperModal>
+      <WrapperContent>
+        {!doingCheck && !doneCheck ? (
+          <Error>
+            <TitleModal>Ops, ocorreu um erro! </TitleModal>
+            <BodyModal>Escolha uma opção antes de salvar</BodyModal>
+            <Button onClick={() => SetIsSaved(false)}>OK</Button>
+          </Error>
+        ) : (
+          <Success>
+            <TitleModal>Concluido!</TitleModal>
+            <BodyModal> Sua ação foi realizada com sucesso! </BodyModal>
+            <Button onClick={() => savedAndClose()}>OK</Button>
+          </Success>
+        )}
       </WrapperContent>
     </WrapperModal>
   );

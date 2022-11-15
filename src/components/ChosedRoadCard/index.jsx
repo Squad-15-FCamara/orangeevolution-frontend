@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronRight,
-  faBookmark
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Container,
@@ -34,7 +31,7 @@ export function ChosedRoadCard({
   link,
   author,
   description,
-  arrFav
+  arrFav,
 }) {
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -68,15 +65,7 @@ export function ChosedRoadCard({
       <Container idRoad={idRoad}>
         <LeftBar idRoad={idRoad} />
         <FaContainer idRoad={idRoad}>
-          <button
-            onClick={
-              () =>
-                CheckFavorite(
-                  id,
-                  isFavorite,
-                )
-            }
-          >
+          <button onClick={() => CheckFavorite(id, isFavorite)}>
             <FontAwesomeIcon
               id="changeColor"
               icon={faBookmark}
