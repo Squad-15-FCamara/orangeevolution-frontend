@@ -82,4 +82,11 @@ export const adminStatistic = {
     );
     return response;
   },
+
+  getStatsBySearchByTitle: async (titleName) => {
+    let response = api.get(
+      `/statisticAdmin/counter/statistic/titles/${titleName}`,
+    );
+    return response;
+  },
 };
