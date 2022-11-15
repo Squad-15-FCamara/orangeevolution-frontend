@@ -21,7 +21,7 @@ export function PersonalDevContent() {
 
   async function getCourses() {
     await api
-      .get('/courses/themes/Desenvolvimento%20Pessoal')
+      .get('/courses/themes/Desenvolvimento')
       .then((response) => setRoadPersonal(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
@@ -31,9 +31,7 @@ export function PersonalDevContent() {
 
   const fetchCounterTheme = async () => {
     try {
-      let response = await adminStatistic.usersDoingATheme(
-        'Desenvolvimento Pessoal',
-      );
+      let response = await adminStatistic.usersDoingATheme('Desenvolvimento');
       setThemeCounter(response.data);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
@@ -47,9 +45,9 @@ export function PersonalDevContent() {
         <FontAwesomeIcon icon={faChevronRight} />
         <a href="/roadsoft">Soft Skills</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="#">Desenvolvimento Pessoal</a>
+        <a href="#">Desenvolvimento</a>
       </LinksContainer>
-      <Gradient>Desenvolvimento Pessoal</Gradient>
+      <Gradient>Desenvolvimento</Gradient>
       <Stats>{themeCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>

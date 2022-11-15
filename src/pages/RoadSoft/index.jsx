@@ -40,7 +40,7 @@ export function RoadSoft() {
 
   const theme1 = {
     idRoad: 'Soft Skills',
-    theme: 'Desenvolvimento Pessoal',
+    theme: 'Desenvolvimento',
     link: '/personalcontent',
   };
   const theme2 = {
