@@ -8,10 +8,17 @@ import {
 } from '../../components/RoadTheme/style';
 import { Theme, ThemeTitle } from './style';
 
-export function ContentStatisticsAdm({ name, doing, done, didnt, link }) {
+export function ContentStatisticsAdm({
+  idRoad,
+  name,
+  doing,
+  done,
+  didnt,
+  link,
+}) {
   return (
-    <Container>
-      <LeftBar />
+    <Container idRoad={idRoad}>
+      <LeftBar idRoad={idRoad} />
       <TextContainer>
         <ThemeTitle>{name}</ThemeTitle>
         <Theme>{doing}</Theme>
