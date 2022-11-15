@@ -6,7 +6,7 @@ import { statisticsService } from '../../services/statisticsService';
 import { useState } from 'react';
 
 export const Container = styled.div`
-  width: 887px;
+  width: 100%;
   height: 100px;
   border: 1px solid #4140bf;
   border-radius: 20px;
@@ -185,30 +185,31 @@ export const ModalContentCard = ({
   time,
   description,
   link,
-  setIsOpen
+  setIsOpen,
 }) => {
-
   const [doingCheck, setDoingCheck] = useState(false);
   const [doneCheck, setDoneCheck] = useState(false);
 
   const handleChange = (event) => {
-    event.target.name === 'doing' ? setDoingCheck(!doingCheck) : setDoneCheck(!doneCheck);
-    console.log(id + ' FAZENO: ' + doingCheck + ' JA FEIZ ' + doneCheck)
-  }
+    event.target.name === 'doing'
+      ? setDoingCheck(!doingCheck)
+      : setDoneCheck(!doneCheck);
+    console.log(id + ' FAZENO: ' + doingCheck + ' JA FEIZ ' + doneCheck);
+  };
 
   const saveDoingCourse = (id) => statisticsService.addDoingCourse(4, id);
   const saveDoneCourse = (id) => statisticsService.addDoneCourse(4, id);
 
   const saveCourse = async (courseId) => {
-    console.log(courseId)
+    console.log(courseId);
     if (doingCheck && !doneCheck) {
       let response = await saveDoingCourse(courseId);
       return console.log(response.status);
     } else if (!doingCheck && doneCheck) {
       let response = await saveDoneCourse(courseId);
       return console.log(response.status);
-    } else return alert('deu nao paizao....')
-  }
+    } else return alert('deu nao paizao....');
+  };
 
   return (
     <WrapperModal>
@@ -232,13 +233,17 @@ export const ModalContentCard = ({
           <StatusTitle>Status</StatusTitle>
           <DoingProgress>
             <Text>Em andamento</Text>
-            <CheckBoxDoing type="checkbox" onChange={handleChange} name='doing' />
+            <CheckBoxDoing
+              type="checkbox"
+              onChange={handleChange}
+              name="doing"
+            />
           </DoingProgress>
           <DoneProgress>
             <Text>Concluído</Text>
-            <CheckBoxDone type="checkbox" onChange={handleChange} name='done' />
+            <CheckBoxDone type="checkbox" onChange={handleChange} name="done" />
           </DoneProgress>
-          <Button onClick={() => saveCourse(id)} > Salvar </Button>
+          <Button onClick={() => saveCourse(id)}> Salvar </Button>
         </Status>
       </WrapperContent>
     </WrapperModal>
