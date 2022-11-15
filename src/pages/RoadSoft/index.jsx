@@ -38,8 +38,16 @@ export function RoadSoft() {
     }
   };
 
-  const theme1 = { theme: 'Desenvolvimento Pessoal', link: '/personalcontent' };
-  const theme2 = { theme: 'Trabalho em Equipe', link: '/teamcontent' };
+  const theme1 = {
+    idRoad: 'Soft Skills',
+    theme: 'Desenvolvimento Pessoal',
+    link: '/personalcontent',
+  };
+  const theme2 = {
+    idRoad: 'Soft Skills',
+    theme: 'Trabalho em Equipe',
+    link: '/teamcontent',
+  };
 
   return (
     <Wrapper>
@@ -52,8 +60,16 @@ export function RoadSoft() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/02</Themes>
       <ContainerTheme>
-        <RoadTheme theme={theme1.theme} link={theme1.link} />
-        <RoadTheme theme={theme2.theme} link={theme2.link} />
+        <RoadTheme
+          idRoad={theme1.idRoad}
+          theme={theme1.theme}
+          link={theme1.link}
+        />
+        <RoadTheme
+          idRoad={theme2.idRoad}
+          theme={theme2.theme}
+          link={theme2.link}
+        />
       </ContainerTheme>
     </Wrapper>
   );

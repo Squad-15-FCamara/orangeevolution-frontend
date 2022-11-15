@@ -38,8 +38,16 @@ export function RoadDev() {
     }
   };
 
-  const theme1 = { theme: 'Iniciando', link: '/contentintro' };
-  const theme2 = { theme: 'Full Stack', link: '/contentfull' };
+  const theme1 = {
+    idRoad: 'FullStack',
+    theme: 'Iniciando',
+    link: '/contentintro',
+  };
+  const theme2 = {
+    idRoad: 'FullStack',
+    theme: 'Full Stack',
+    link: '/contentfull',
+  };
 
   return (
     <Wrapper>
@@ -52,8 +60,16 @@ export function RoadDev() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/02</Themes>
       <ContainerTheme>
-        <RoadTheme theme={theme1.theme} link={theme1.link} />
-        <RoadTheme theme={theme2.theme} link={theme2.link} />
+        <RoadTheme
+          idRoad={theme1.idRoad}
+          theme={theme1.theme}
+          link={theme1.link}
+        />
+        <RoadTheme
+          idRoad={theme2.idRoad}
+          theme={theme2.theme}
+          link={theme2.link}
+        />
       </ContainerTheme>
     </Wrapper>
   );

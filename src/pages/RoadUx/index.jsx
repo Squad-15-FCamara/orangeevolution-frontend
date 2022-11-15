@@ -38,9 +38,21 @@ export function RoadUx() {
     }
   };
 
-  const theme1 = { theme: 'Fundamentos de UX', link: '/uxcontent' };
-  const theme2 = { theme: 'Fundamentos de UI', link: '/uicontent' };
-  const theme3 = { theme: 'Opcional', link: '/optionaluxcontent' };
+  const theme1 = {
+    idRoad: 'UX UI Design',
+    theme: 'Fundamentos de UX',
+    link: '/uxcontent',
+  };
+  const theme2 = {
+    idRoad: 'UX UI Design',
+    theme: 'Fundamentos de UI',
+    link: '/uicontent',
+  };
+  const theme3 = {
+    idRoad: 'UX UI Design',
+    theme: 'Opcional',
+    link: '/optionaluxcontent',
+  };
 
   return (
     <Wrapper>
@@ -53,9 +65,21 @@ export function RoadUx() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/03</Themes>
       <ContainerTheme>
-        <RoadTheme theme={theme1.theme} link={theme1.link} />
-        <RoadTheme theme={theme2.theme} link={theme2.link} />
-        <RoadTheme theme={theme3.theme} link={theme3.link} />
+        <RoadTheme
+          idRoad={theme1.idRoad}
+          theme={theme1.theme}
+          link={theme1.link}
+        />
+        <RoadTheme
+          idRoad={theme2.idRoad}
+          theme={theme2.theme}
+          link={theme2.link}
+        />
+        <RoadTheme
+          idRoad={theme3.idRoad}
+          theme={theme3.theme}
+          link={theme3.link}
+        />
       </ContainerTheme>
     </Wrapper>
   );

@@ -40,9 +40,21 @@ export function RoadQa() {
     }
   };
 
-  const theme1 = { theme: 'Testes Automatizados', link: '/testescontent' };
-  const theme2 = { theme: 'BDD', link: '/bddcontent' };
-  const theme3 = { theme: 'Qualidade', link: '/qualitycontent' };
+  const theme1 = {
+    idRoad: 'Quality Assurance QA',
+    theme: 'Testes Automatizados',
+    link: '/testescontent',
+  };
+  const theme2 = {
+    idRoad: 'Quality Assurance QA',
+    theme: 'BDD',
+    link: '/bddcontent',
+  };
+  const theme3 = {
+    idRoad: 'Quality Assurance QA',
+    theme: 'Qualidade',
+    link: '/qualitycontent',
+  };
 
   return (
     <Wrapper>
@@ -55,9 +67,21 @@ export function RoadQa() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/03</Themes>
       <ContainerTheme>
-        <RoadTheme theme={theme1.theme} link={theme1.link} />
-        <RoadTheme theme={theme2.theme} link={theme2.link} />
-        <RoadTheme theme={theme3.theme} link={theme3.link} />
+        <RoadTheme
+          idRoad={theme1.idRoad}
+          theme={theme1.theme}
+          link={theme1.link}
+        />
+        <RoadTheme
+          idRoad={theme2.idRoad}
+          theme={theme2.theme}
+          link={theme2.link}
+        />
+        <RoadTheme
+          idRoad={theme3.idRoad}
+          theme={theme3.theme}
+          link={theme3.link}
+        />
       </ContainerTheme>
     </Wrapper>
   );
