@@ -11,8 +11,6 @@ import { TopMobileMenu } from '../components/TopMobileMenu';
 export function DefaultLayout() {
   return (
     <>
-      <Media query="(max-width: 900px)" render={() => <BottomMobileMenu />} />
-
       <Media query="(min-width: 900px)" render={() => <SideMenu />} />
 
       <Media query="(max-width: 900px)" render={() => <TopMobileMenu />} />
@@ -20,6 +18,8 @@ export function DefaultLayout() {
       <Media query="(min-width: 900px)" render={() => <DiscordIcon />} />
 
       <Outlet />
+
+      <Media query="(max-width: 900px)" render={() => <BottomMobileMenu />} />
 
       <Media query="(min-width: 900px)" render={() => <Footer />} />
     </>
