@@ -51,7 +51,7 @@ export const Home = () => {
           style={{
             width: '73%',
             height: '100%',
-            marginLeft: '0px'
+            marginLeft: '0px',
           }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
@@ -166,7 +166,7 @@ export const Home = () => {
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
           breakpoints={{
-            900: { slidesPerView: 2,5 },
+            900: { slidesPerView: 2.5 },
             500: { slidesPerView: 1 },
           }}
         >
