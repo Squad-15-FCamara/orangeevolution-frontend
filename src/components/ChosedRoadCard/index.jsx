@@ -42,7 +42,6 @@ export function ChosedRoadCard({
 
   useEffect(() => {
     setFavorites(arrFav);
-    console.log(arrFav)
   }, []);
 
   let favExists;
