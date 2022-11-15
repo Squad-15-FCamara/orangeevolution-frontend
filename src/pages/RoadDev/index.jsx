@@ -13,9 +13,11 @@ import {
   Themes,
 } from './style';
 import { RoadTheme } from '../../components/RoadTheme';
+import { adminStatistic } from '../../services/adminStatisticsService';
 
 export function RoadDev() {
   const [roadDev, setRoadDev] = useState([]);
+  const [roadCounter, setRoadCounter] = useState([]);
 
   useEffect(() => {
     api
@@ -24,7 +26,17 @@ export function RoadDev() {
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
+    fetchCounterRoad();
   }, []);
+
+  const fetchCounterRoad = async () => {
+    try {
+      let response = await adminStatistic.usersDoingARoad('FullStack');
+      setRoadCounter(response.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e);
+    }
+  };
 
   const theme1 = { theme: 'Iniciando', link: '/contentintro' };
   const theme2 = { theme: 'Full Stack', link: '/contentfull' };
@@ -37,7 +49,7 @@ export function RoadDev() {
         <a href="#">Dev Full Stack</a>
       </LinksContainer>
       <Gradient>Dev Full Stack</Gradient>
-      <Stats>xxx pessoas estão estudando essa trilha</Stats>
+      <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/02</Themes>
       <ContainerTheme>
         <RoadTheme theme={theme1.theme} link={theme1.link} />
