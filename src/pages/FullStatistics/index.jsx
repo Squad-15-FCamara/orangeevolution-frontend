@@ -8,9 +8,11 @@ import { InfoContainer } from './style';
 import { useEffect, useState } from 'react';
 import { adminStatistic } from '../../services/adminStatisticsService';
 import { ContentStatisticsAdm } from '../../components/ContentStatisticsAdm';
+import { Loading } from '../../components/Loading';
 
 export function FullStatistics() {
   const [getStats, setGetStats] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchStats();
@@ -20,6 +22,7 @@ export function FullStatistics() {
     try {
       let response = await adminStatistic.usersStatsByTheme('FullStack');
       setGetStats(response.data);
+      setIsLoading(false);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
@@ -46,16 +49,20 @@ export function FullStatistics() {
         <h2>Não Acessado</h2>
       </InfoContainer>
       <ContainerTheme>
-        {getStats.map((card, index) => (
-          <ContentStatisticsAdm
-            idRoad={card.idRoad}
-            name={card.name}
-            doing={card.doing}
-            done={card.done}
-            didnt={card.didnt}
-            key={index}
-          />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          getStats.map((card, index) => (
+            <ContentStatisticsAdm
+              idRoad={card.idRoad}
+              name={card.name}
+              doing={card.doing}
+              done={card.done}
+              didnt={card.didnt}
+              key={index}
+            />
+          ))
+        )}
       </ContainerTheme>
     </Wrapper>
   );

@@ -14,15 +14,18 @@ import {
 } from './style';
 import { RoadTheme } from '../../components/RoadTheme';
 import { adminStatistic } from '../../services/adminStatisticsService';
+import { Loading } from '../../components/Loading';
 
 export function RoadQa() {
   const [roadQa, setRoadQa] = useState([]);
   const [roadCounter, setRoadCounter] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
       .get('/courses/roads/Quality%20Assurance%20QA')
       .then((response) => setRoadQa(response.data))
+      .then(() => setIsLoading(false))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
@@ -67,21 +70,33 @@ export function RoadQa() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/03</Themes>
       <ContainerTheme>
-        <RoadTheme
-          idRoad={theme1.idRoad}
-          theme={theme1.theme}
-          link={theme1.link}
-        />
-        <RoadTheme
-          idRoad={theme2.idRoad}
-          theme={theme2.theme}
-          link={theme2.link}
-        />
-        <RoadTheme
-          idRoad={theme3.idRoad}
-          theme={theme3.theme}
-          link={theme3.link}
-        />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <RoadTheme
+            idRoad={theme1.idRoad}
+            theme={theme1.theme}
+            link={theme1.link}
+          />
+        )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <RoadTheme
+            idRoad={theme2.idRoad}
+            theme={theme2.theme}
+            link={theme2.link}
+          />
+        )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <RoadTheme
+            idRoad={theme3.idRoad}
+            theme={theme3.theme}
+            link={theme3.link}
+          />
+        )}
       </ContainerTheme>
     </Wrapper>
   );

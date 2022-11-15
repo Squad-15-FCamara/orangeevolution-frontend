@@ -14,15 +14,18 @@ import {
 } from './style';
 import { RoadTheme } from '../../components/RoadTheme';
 import { adminStatistic } from '../../services/adminStatisticsService';
+import { Loading } from '../../components/Loading';
 
 export function RoadDev() {
   const [roadDev, setRoadDev] = useState([]);
   const [roadCounter, setRoadCounter] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     api
       .get('/courses/roads/FullStack')
       .then((response) => setRoadDev(response.data))
+      .then(() => setIsLoading(false))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
       });
@@ -60,16 +63,24 @@ export function RoadDev() {
       <Stats>{roadCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Temas - 00/02</Themes>
       <ContainerTheme>
-        <RoadTheme
-          idRoad={theme1.idRoad}
-          theme={theme1.theme}
-          link={theme1.link}
-        />
-        <RoadTheme
-          idRoad={theme2.idRoad}
-          theme={theme2.theme}
-          link={theme2.link}
-        />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <RoadTheme
+            idRoad={theme1.idRoad}
+            theme={theme1.theme}
+            link={theme1.link}
+          />
+        )}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <RoadTheme
+            idRoad={theme2.idRoad}
+            theme={theme2.theme}
+            link={theme2.link}
+          />
+        )}
       </ContainerTheme>
     </Wrapper>
   );
