@@ -20,7 +20,7 @@ export function ContentIntro() {
 
   async function getCourses() {
     await api
-      .get('/courses/themes/introdução')
+      .get('/courses/themes/iniciando')
       .then((response) => setRoadDev(response.data))
       .catch((err) => {
         console.error('ops! ocorreu um erro' + err);
