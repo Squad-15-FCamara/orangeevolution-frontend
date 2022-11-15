@@ -33,7 +33,7 @@ export function IntroStatistics() {
       <LinksContainer>
         <a href="#">Trilhas</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="/statisticsadm">Temas</a>
+        <a href="/roaddevadm">Temas</a>
         <FontAwesomeIcon icon={faChevronRight} />
         <a href="#">Conteúdos</a>
       </LinksContainer>

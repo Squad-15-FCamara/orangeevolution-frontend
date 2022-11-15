@@ -72,8 +72,8 @@ export function AppRoutes() {
             <Route path="/statisticsadm" element={<StatisticsAdm />} />
             <Route path="/profileadm" element={<ProfileAdm />} />
             <Route path="/searchadm" element={<SearchAdm />} />
-            <Route path="/0" element={<IntroStatistics />} />
-            <Route path="/1" element={<FullStatistics />} />
+            <Route path="/roaddevadm/0" element={<IntroStatistics />} />
+            <Route path="/roaddevadm/1" element={<FullStatistics />} />
           </Route>
         </Routes>
       </FavContextProvider>
