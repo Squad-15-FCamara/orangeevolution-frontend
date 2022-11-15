@@ -8,14 +8,29 @@ import { useState } from 'react';
 export const Container = styled.div`
   width: 100%;
   height: 100px;
-  border: 1px solid #4140bf;
+  border: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '1px solid #4140bf') ||
+    (idRoad == 'UX UI Design' && '1px solid #dc3cc2') ||
+    (idRoad == 'Quality Assurance QA' && '1px solid #36aa4b') ||
+    (idRoad == 'Soft Skills' && '1px solid #c8bf0d') ||
+    '1px solid #000'};
   border-radius: 20px;
-  background-color: #e2e2ff;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#e2e2ff') ||
+    (idRoad == 'UX UI Design' && '#FFE9FB') ||
+    (idRoad == 'Quality Assurance QA' && '#D2F1D9') ||
+    (idRoad == 'Soft Skills' && '#FFFDD2') ||
+    '#000'};
   display: flex;
 `;
 
 export const LeftBar = styled.div`
-  background-color: #4140bf;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '1px solid #4140bf') ||
+    (idRoad == 'UX UI Design' && '1px solid #dc3cc2') ||
+    (idRoad == 'Quality Assurance QA' && '1px solid #36aa4b') ||
+    (idRoad == 'Soft Skills' && '1px solid #c8bf0d') ||
+    '1px solid #000'};
   width: 20px;
   height: 100px;
   border-radius: 20px 0px 0px 20px;
@@ -31,7 +46,12 @@ export const FaContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e2e2ff;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#e2e2ff') ||
+    (idRoad == 'UX UI Design' && '#FFE9FB') ||
+    (idRoad == 'Quality Assurance QA' && '#D2F1D9') ||
+    (idRoad == 'Soft Skills' && '#FFFDD2') ||
+    '#000'};
   width: 10%;
   border-radius: 0px 20px 20px 0px;
   button {

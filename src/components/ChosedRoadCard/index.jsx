@@ -52,7 +52,7 @@ export function ChosedRoadCard({
     setIsFavorite(favExists);
   }, [favorites]);
 
-  let handleFav = () => {}
+  let handleFav = () => {};
 
   const getFavorites = async (id) => {
     const res = await statisticsService.getFavoriteCoursesByUser(4);
@@ -71,12 +71,16 @@ export function ChosedRoadCard({
 
   return (
     <>
-      <Container>
-        <LeftBar />
-        <FaContainer>
+      <Container idRoad={idRoad}>
+        <LeftBar idRoad={idRoad} />
+        <FaContainer idRoad={idRoad}>
           <button
             onClick={
-              () => CheckFavorite(id, isFavorite) /* () => SetFavorite(4, `${id}`) */
+              () =>
+                CheckFavorite(
+                  id,
+                  isFavorite,
+                ) /* () => SetFavorite(4, `${id}`) */
             }
           >
             <FontAwesomeIcon
@@ -88,16 +92,16 @@ export function ChosedRoadCard({
             />
           </button>
         </FaContainer>
-        <TextContainer>
+        <TextContainer idRoad={idRoad}>
           <Title>{title}</Title>
           <TypeContainer>
-            <Type>{idType}</Type>
+            <Type idRoad={idRoad}>{idType}</Type>
             <Duration>{time}min</Duration>
           </TypeContainer>
           <Theme>{idTheme}</Theme>
           <Road>{idRoad}</Road>
         </TextContainer>
-        <FaContainer>
+        <FaContainer idRoad={idRoad}>
           <a /* target="_blank" href={link} */ onClick={() => setIsOpen(true)}>
             <FontAwesomeIcon icon={faChevronRight} size="xl" />
           </a>
