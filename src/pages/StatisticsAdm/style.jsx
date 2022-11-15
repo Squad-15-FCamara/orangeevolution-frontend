@@ -13,4 +13,10 @@ export const InfoContainer = styled.div`
     font-size: 40px;
     font-weight: 100;
   }
+  @media screen and (max-width: 900px) {
+    padding-left: 40px;
+    h2 {
+      font-size: 1rem;
+    }
+  }
 `;

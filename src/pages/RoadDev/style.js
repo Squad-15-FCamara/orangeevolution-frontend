@@ -10,6 +10,9 @@ export const LinksContainer = styled.div`
     text-decoration: none;
     color: inherit;
   }
+  @media screen and (max-width: 900px) {
+    padding-left: 20px;
+  }
 `;
 
 export const Gradient = styled.h1`
