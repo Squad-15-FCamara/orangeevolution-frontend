@@ -3,10 +3,10 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import { Container, LeftBar, TextContainer, Theme } from './style';
 
-export function RoadTheme({ theme, link }) {
+export function RoadTheme({ idRoad, theme, link }) {
   return (
-    <Container>
-      <LeftBar />
+    <Container idRoad={idRoad}>
+      <LeftBar idRoad={idRoad} />
       <TextContainer>
         <Theme>{theme}</Theme>
         <a href={link}>
