@@ -46,3 +46,11 @@ export const Theme = styled.h2`
   text-align: center;
   display: flex;
 `;
+
+export const ThemeName = styled(Theme)`
+  width: 150px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 0px;
+`;
