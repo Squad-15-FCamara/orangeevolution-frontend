@@ -24,6 +24,10 @@ export const Gradient = styled.h1`
 
 export const Stats = styled.p`
   margin: 0;
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+  }
 `;
 
 export const Themes = styled.h2`

@@ -188,6 +188,7 @@ export const Input = styled.input`
   margin-left: 15px;
   max-width: 130px;
   font-family: 'Montserrat';
+  z-index: 99999;
   background-color: transparent;
 
   ::placeholder {

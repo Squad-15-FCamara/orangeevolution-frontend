@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const PageTitle = styled.h1`
   color: #333333;
   margin: 54px 0 8px 0;
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+  }
 `;
 
 export const FilterContainer = styled.div`

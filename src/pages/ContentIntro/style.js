@@ -24,6 +24,10 @@ export const Gradient = styled.h1`
 
 export const Stats = styled.p`
   margin: 0;
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+  }
 `;
 
 export const Themes = styled.h2`
@@ -36,4 +40,8 @@ export const ContainerTheme = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media screen and (max-width: 900px) {
+    padding: 15px;
+  }
 `;

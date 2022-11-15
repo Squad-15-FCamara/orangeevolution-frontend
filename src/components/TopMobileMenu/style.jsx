@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Input, InputDiv, SearchIcon } from '../SideBarMenu/style';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -42,4 +43,18 @@ export const LogOut = styled(FontAwesomeIcon)`
   :hover {
     color: #36357e;
   }
+`;
+
+export const InputDivMobile = styled(InputDiv)`
+  height: 40px;
+  width: 150px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  z-index: 99999;
+`;
+
+export const SearchIconMobile = styled(SearchIcon)`
+  height: 20px;
+  padding-right: 100px;
 `;

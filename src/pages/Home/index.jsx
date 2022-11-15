@@ -49,12 +49,12 @@ export const Home = () => {
       <Cards>
         <Swiper
           style={{
-            width: '90%',
+            width: '73%',
             height: '100%',
+            marginLeft: '0px'
           }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          gap={50}
           modules={[Navigation, Pagination, Scrollbar]}
           breakpoints={{
             900: { slidesPerView: 2.5 },
@@ -62,6 +62,30 @@ export const Home = () => {
           }}
         >
           <SwiperSlide style={{ width: '100%' }}>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
             <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
@@ -101,7 +125,6 @@ export const Home = () => {
           style={{ display: 'flex' }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
           breakpoints={{
             900: { slidesPerView: 2.5 },
             500: { slidesPerView: 1 },
@@ -142,9 +165,8 @@ export const Home = () => {
           style={{ display: 'flex' }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          // slidesPerView={2.5}
           breakpoints={{
-            900: { slidesPerView: 2 },
+            900: { slidesPerView: 2,5 },
             500: { slidesPerView: 1 },
           }}
         >
