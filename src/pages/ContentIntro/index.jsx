@@ -9,14 +9,26 @@ import { Gradient, LinksContainer, Stats, Themes } from './style';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
 import { statisticsService } from '../../services/statisticsService';
+import { adminStatistic } from '../../services/adminStatisticsService';
 
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
+  const [themeCounter, setThemeCounter] = useState([]);
 
   useEffect(() => {
     getCourses();
     getFavorites();
+    fetchCounterTheme();
   }, []);
+
+  const fetchCounterTheme = async () => {
+    try {
+      let response = await adminStatistic.usersDoingATheme('Iniciando');
+      setThemeCounter(response.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e);
+    }
+  };
 
   async function getCourses() {
     await api
@@ -46,7 +58,7 @@ export function ContentIntro() {
         <a href="#">Iniciando</a>
       </LinksContainer>
       <Gradient>Iniciando</Gradient>
-      <Stats>xxx pessoas estão estudando essa trilha</Stats>
+      <Stats>{themeCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>
         {roadDev.map((card, index) => (
