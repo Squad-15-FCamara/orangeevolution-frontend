@@ -58,7 +58,6 @@ export function ChosedRoadCard({
       setFavorites((oldState) => {
         return [...oldState, response.data]
       })
-      console.log('favoritos>>>', favorites)
     } else {
       await statisticsService.deleteFavoriteCourse(4, id);
       setFavorites((oldState) => {
