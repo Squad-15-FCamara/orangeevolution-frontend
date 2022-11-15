@@ -48,6 +48,7 @@ export function FullStatistics() {
       <ContainerTheme>
         {getStats.map((card, index) => (
           <ContentStatisticsAdm
+            idRoad={card.idRoad}
             name={card.name}
             doing={card.doing}
             done={card.done}

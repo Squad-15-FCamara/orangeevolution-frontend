@@ -78,6 +78,7 @@ export function SearchAdm() {
         {fetchResults.map((card, index) => {
           return (
             <SearchStatistics
+              idRoad={card.idRoad}
               name={card.name}
               doing={card.doing}
               done={card.done}
