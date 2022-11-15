@@ -6,10 +6,10 @@ import { ContainerTheme, LinksContainer, Stats } from '../RoadDev/style';
 import { PageTitle } from '../SavedContent/style';
 import { InfoContainer } from './style';
 import { useEffect, useState } from 'react';
-import { RoadStatistics } from '../../components/RoadStatistics';
 import { adminStatistic } from '../../services/adminStatisticsService';
+import { ContentStatisticsAdm } from '../../components/ContentStatisticsAdm';
 
-export function StatisticsAdm() {
+export function FullStatistics() {
   const [getStats, setGetStats] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function StatisticsAdm() {
 
   const fetchStats = async () => {
     try {
-      let response = await adminStatistic.usersStatsByRoad('FullStack');
+      let response = await adminStatistic.usersStatsByTheme('FullStack');
       setGetStats(response.data);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
@@ -30,7 +30,9 @@ export function StatisticsAdm() {
       <LinksContainer>
         <a href="#">Trilhas</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="#">Temas</a>
+        <a href="/statisticsadm">Temas</a>
+        <FontAwesomeIcon icon={faChevronRight} />
+        <a href="#">Conteúdos</a>
       </LinksContainer>
       <PageTitle>Estatísticas</PageTitle>
       <Stats>Confira aqui as estatísticas de acesso</Stats>
@@ -45,13 +47,12 @@ export function StatisticsAdm() {
       </InfoContainer>
       <ContainerTheme>
         {getStats.map((card, index) => (
-          <RoadStatistics
+          <ContentStatisticsAdm
             name={card.name}
             doing={card.doing}
             done={card.done}
             didnt={card.didnt}
             key={index}
-            link={index}
           />
         ))}
       </ContainerTheme>

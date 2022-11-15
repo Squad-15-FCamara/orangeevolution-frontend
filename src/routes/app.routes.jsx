@@ -24,6 +24,15 @@ import { RoadQaAdm } from '../pages/RoadQaAdm';
 import { RoadSoftAdm } from '../pages/RoadSoftAdm';
 import { SearchAdm } from '../pages/SearchAdm';
 import { IntroStatistics } from '../pages/IntroStatistics';
+import { FullStatistics } from '../pages/FullStatistics';
+import { UxContent } from '../pages/UxContent';
+import { UiContent } from '../pages/UiContent';
+import { OptionalContent } from '../pages/OptionalContent';
+import { TestesContent } from '../pages/TestesContent';
+import { BddContent } from '../pages/BddContent';
+import { QualityContent } from '../pages/QualityContent';
+import { PersonalDevContent } from '../pages/PersonalDevContent';
+import { TeamWorkContent } from '../pages/TeamWorkContent';
 
 export function AppRoutes() {
   return (
@@ -42,6 +51,14 @@ export function AppRoutes() {
           <Route path="savedcontent" element={<SavedContent />} />
           <Route path="progress" element={<Progress />} />
           <Route path="search" element={<Search />} />
+          <Route path="uxcontent" element={<UxContent />} />
+          <Route path="uicontent" element={<UiContent />} />
+          <Route path="optionaluxcontent" element={<OptionalContent />} />
+          <Route path="testescontent" element={<TestesContent />} />
+          <Route path="bddcontent" element={<BddContent />} />
+          <Route path="qualitycontent" element={<QualityContent />} />
+          <Route path="personalcontent" element={<PersonalDevContent />} />
+          <Route path="teamcontent" element={<TeamWorkContent />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/" element={<DefaultAdm />}>
@@ -53,7 +70,8 @@ export function AppRoutes() {
           <Route path="/statisticsadm" element={<StatisticsAdm />} />
           <Route path="/profileadm" element={<ProfileAdm />} />
           <Route path="/searchadm" element={<SearchAdm />} />
-          <Route path="/introstatistics" element={<IntroStatistics />} />
+          <Route path="/0" element={<IntroStatistics />} />
+          <Route path="/1" element={<FullStatistics />} />
         </Route>
       </Routes>
     </ContextProvider>

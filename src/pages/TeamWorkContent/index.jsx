@@ -5,63 +5,55 @@ import api from '../../services/api';
 import { useEffect, useState } from 'react';
 
 import { Wrapper } from '../Home/style';
-import { Gradient, LinksContainer, Stats, Themes } from './style';
+import { Gradient, LinksContainer, Stats, Themes } from '../ContentIntro/style';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
-import { statisticsService } from '../../services/statisticsService';
 import { adminStatistic } from '../../services/adminStatisticsService';
 
-export function ContentIntro() {
-  const [roadDev, setRoadDev] = useState([]);
+export function TeamWorkContent() {
+  const [roadTeam, setRoadTeam] = useState([]);
   const [themeCounter, setThemeCounter] = useState([]);
 
   useEffect(() => {
     getCourses();
-    getFavorites();
     fetchCounterTheme();
   }, []);
 
+  async function getCourses() {
+    await api
+      .get('/courses/themes/Trabalho%20em%20Equipe')
+      .then((response) => setRoadTeam(response.data))
+      .catch((err) => {
+        console.error('ops! ocorreu um erro' + err);
+      });
+    [];
+  }
+
   const fetchCounterTheme = async () => {
     try {
-      let response = await adminStatistic.usersDoingATheme('Iniciando');
+      let response = await adminStatistic.usersDoingATheme(
+        'Trabalho em Equipe',
+      );
       setThemeCounter(response.data);
     } catch (e) {
       console.error('Ops! Encontramos um erro: ' + e);
     }
   };
 
-  async function getCourses() {
-    await api
-      .get('/courses/themes/iniciando')
-      .then((response) => setRoadDev(response.data))
-      .catch((err) => {
-        console.error('ops! ocorreu um erro' + err);
-      });
-  }
-
-  function getFavorites() {
-    const ids = roadDev.map((course) => course.id);
-    const favoritesArray = ids.forEach((id) => GetFavorite(id));
-    // const favoritesArray = await GetFavorite(ids)
-    // setFavorites(favoritesArray.data.id);
-  }
-
-  const GetFavorite = statisticsService.getFavoriteCoursesByUser;
-
   return (
     <Wrapper>
       <LinksContainer>
         <a href="home">Home</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="/roaddev">Dev Full Stack</a>
+        <a href="/roadsoft">Soft Skills</a>
         <FontAwesomeIcon icon={faChevronRight} />
-        <a href="#">Iniciando</a>
+        <a href="#">Trabalho em Equipe</a>
       </LinksContainer>
-      <Gradient>Iniciando</Gradient>
+      <Gradient>Trabalho em Equipe</Gradient>
       <Stats>{themeCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>
-        {roadDev.map((card, index) => (
+        {roadTeam.map((card, index) => (
           <ChosedRoadCard
             id={card.id}
             title={card.title}

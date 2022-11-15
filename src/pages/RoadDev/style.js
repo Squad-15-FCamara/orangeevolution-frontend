@@ -32,6 +32,7 @@ export const Themes = styled.h2`
 `;
 
 export const ContainerTheme = styled.div`
+  width: 74%;
   display: flex;
   flex-direction: column;
   gap: 24px;

@@ -8,12 +8,15 @@ import { Wrapper } from '../Home/style';
 import { Gradient, LinksContainer, Stats, Themes } from '../ContentIntro/style';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
+import { adminStatistic } from '../../services/adminStatisticsService';
 
 export function ContentFull() {
   const [roadDev, setRoadDev] = useState([]);
+  const [themeCounter, setThemeCounter] = useState([]);
 
   useEffect(() => {
     getCourses();
+    fetchCounterTheme();
   }, []);
 
   async function getCourses() {
@@ -26,6 +29,15 @@ export function ContentFull() {
     [];
   }
 
+  const fetchCounterTheme = async () => {
+    try {
+      let response = await adminStatistic.usersDoingATheme('FullStack');
+      setThemeCounter(response.data);
+    } catch (e) {
+      console.error('Ops! Encontramos um erro: ' + e);
+    }
+  };
+
   return (
     <Wrapper>
       <LinksContainer>
@@ -36,7 +48,7 @@ export function ContentFull() {
         <a href="#">Full Stack</a>
       </LinksContainer>
       <Gradient>Full Stack</Gradient>
-      <Stats>xxx pessoas estão estudando essa trilha</Stats>
+      <Stats>{themeCounter} pessoas estão estudando essa trilha</Stats>
       <Themes>Conteúdos - 00/30</Themes>
       <ContainerTheme>
         {roadDev.map((card, index) => (
