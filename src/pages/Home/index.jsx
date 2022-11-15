@@ -6,6 +6,7 @@ import {
   SubHeader,
   Status,
   CardsStudy,
+  LinkCard,
 } from './style';
 import CardOrange from './card_orange_juice.svg';
 import { RoadCard } from '../../components/RoadCard';
@@ -47,35 +48,42 @@ export const Home = () => {
 
       <Cards>
         <Swiper
-          style={{ display: 'flex' }}
+          style={{
+            width: '90%',
+            height: '100%',
+          }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
+          gap={50}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2.5 },
+            500: { slidesPerView: 1 },
+          }}
         >
-          <SwiperSlide>
-            <a
+          <SwiperSlide style={{ width: '100%' }}>
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
           </SwiperSlide>
           <SwiperSlide>
-            <a
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
           </SwiperSlide>
           <SwiperSlide>
-            <a
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
           </SwiperSlide>
         </Swiper>
       </Cards>
@@ -94,6 +102,10 @@ export const Home = () => {
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
           slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2.5 },
+            500: { slidesPerView: 1 },
+          }}
         >
           <SwiperSlide
             style={{
@@ -130,7 +142,11 @@ export const Home = () => {
           style={{ display: 'flex' }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
+          // slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2 },
+            500: { slidesPerView: 1 },
+          }}
         >
           <SwiperSlide
             style={{
