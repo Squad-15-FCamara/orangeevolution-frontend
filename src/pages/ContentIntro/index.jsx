@@ -10,10 +10,13 @@ import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
 import { statisticsService } from '../../services/statisticsService';
 import { adminStatistic } from '../../services/adminStatisticsService';
+import { useContext } from 'react';
+import { favContext } from '../../context/favoritesContext';
 
 export function ContentIntro() {
   const [roadDev, setRoadDev] = useState([]);
   const [themeCounter, setThemeCounter] = useState([]);
+  const { favorites } = useContext(favContext);
 
   useEffect(() => {
     getCourses();
@@ -73,6 +76,7 @@ export function ContentIntro() {
             key={index}
             description={card.description}
             author={card.author}
+            arrFav={favorites}
           />
         ))}
       </ContainerTheme>

@@ -2,17 +2,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import api from '../../services/api';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { Wrapper } from '../Home/style';
 import { Gradient, LinksContainer, Stats, Themes } from '../ContentIntro/style';
 import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { ContainerTheme } from '../RoadDev/style';
 import { adminStatistic } from '../../services/adminStatisticsService';
+import { favContext } from '../../context/favoritesContext';
 
 export function PersonalDevContent() {
   const [roadPersonal, setRoadPersonal] = useState([]);
   const [themeCounter, setThemeCounter] = useState([]);
+  const { favorites } = useContext(favContext);
 
   useEffect(() => {
     getCourses();
@@ -63,6 +65,7 @@ export function PersonalDevContent() {
             key={index}
             description={card.description}
             author={card.author}
+            arrFav={favorites}
           />
         ))}
       </ContainerTheme>

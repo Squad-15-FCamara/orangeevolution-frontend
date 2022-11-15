@@ -2,7 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import api from '../../services/api';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+
+import { favContext } from '../../context/favoritesContext'
 
 import { Wrapper } from '../Home/style';
 import { Gradient, LinksContainer, Stats, Themes } from '../ContentIntro/style';
@@ -13,6 +15,7 @@ import { adminStatistic } from '../../services/adminStatisticsService';
 export function TestesContent() {
   const [roadTestes, setRoadTeste] = useState([]);
   const [themeCounter, setThemeCounter] = useState([]);
+  const { favorites } = useContext(favContext);
 
   useEffect(() => {
     getCourses();
@@ -65,6 +68,7 @@ export function TestesContent() {
             key={index}
             description={card.description}
             author={card.author}
+            arrFav={favorites}
           />
         ))}
       </ContainerTheme>
