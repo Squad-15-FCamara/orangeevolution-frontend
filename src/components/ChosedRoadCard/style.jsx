@@ -40,6 +40,13 @@ export const Title = styled.span`
   font-weight: 700;
   font-size: 1rem;
   display: block;
+
+  @media screen and (max-width: 500px) {
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const FaContainer = styled.div`
