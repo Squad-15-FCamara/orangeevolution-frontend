@@ -2,6 +2,7 @@ import {
   Card,
   Wrapper,
   Cards,
+  CardsNews,
   Header,
   SubHeader,
   Status,
@@ -46,7 +47,7 @@ export const Home = () => {
       <Header> Olá, Thiago </Header>
       <SubHeader>Novidades Orange</SubHeader>
 
-      <Cards>
+      <CardsNews>
         <Swiper
           style={{
             width: '73%',
@@ -110,7 +111,7 @@ export const Home = () => {
             </LinkCard>
           </SwiperSlide>
         </Swiper>
-      </Cards>
+      </CardsNews>
 
       <SubHeader>Trilhas </SubHeader>
 
