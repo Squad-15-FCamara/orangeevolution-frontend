@@ -21,10 +21,12 @@ import { StudyCard } from '../../components/StudyCard';
 
 import { statisticsService } from '../../services/statisticsService';
 import { useEffect, useState } from 'react';
+import { Loading } from '../../components/Loading';
 
 export const Home = () => {
   const [doingcourse, setDoingCourse] = useState([]);
   const [donecourse, setDoneCourse] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchingDoing();
@@ -35,11 +37,13 @@ export const Home = () => {
   const fetchingDoing = async () => {
     let response = await statisticsService.getDoingCoursesByUser(4);
     setDoingCourse(response.data);
+    setIsLoading(false);
   };
 
   const fetchingDone = async () => {
     let responseDone = await statisticsService.getDoneCoursesByUser(4);
     setDoneCourse(responseDone.data);
+    setIsLoading(false);
   };
 
   return (
@@ -141,17 +145,21 @@ export const Home = () => {
               zIndex: '1',
             }}
           >
-            {doingcourse.map((card, index) => (
-              <StudyCard
-                title={card.title}
-                idType={card.idType}
-                time={card.time}
-                idTheme={card.idTheme}
-                idRoad={card.idRoad}
-                link={card.link}
-                key={index}
-              />
-            ))}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              doingcourse.map((card, index) => (
+                <StudyCard
+                  title={card.title}
+                  idType={card.idType}
+                  time={card.time}
+                  idTheme={card.idTheme}
+                  idRoad={card.idRoad}
+                  link={card.link}
+                  key={index}
+                />
+              ))
+            )}
           </SwiperSlide>
           <SwiperSlide />
           <SwiperSlide />
@@ -181,17 +189,21 @@ export const Home = () => {
               zIndex: '1',
             }}
           >
-            {donecourse.map((card, index) => (
-              <StudyCard
-                title={card.title}
-                idType={card.idType}
-                time={card.time}
-                idTheme={card.idTheme}
-                idRoad={card.idRoad}
-                link={card.link}
-                key={index}
-              />
-            ))}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              donecourse.map((card, index) => (
+                <StudyCard
+                  title={card.title}
+                  idType={card.idType}
+                  time={card.time}
+                  idTheme={card.idTheme}
+                  idRoad={card.idRoad}
+                  link={card.link}
+                  key={index}
+                />
+              ))
+            )}
           </SwiperSlide>
           <SwiperSlide />
           <SwiperSlide />
