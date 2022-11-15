@@ -21,6 +21,7 @@ import { StudyCard } from '../../components/StudyCard';
 
 import { statisticsService } from '../../services/statisticsService';
 import { useEffect, useState } from 'react';
+import { RoadCardAdm } from '../../components/RoadCardAdm';
 
 export const HomeAdm = () => {
   const [doingcourse, setDoingCourse] = useState([]);
@@ -115,7 +116,7 @@ export const HomeAdm = () => {
 
       <SubHeader>Trilhas </SubHeader>
 
-      <RoadCard />
+      <RoadCardAdm />
 
       <SubHeader>Atividades dos Usuários</SubHeader>
 
