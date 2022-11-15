@@ -2,13 +2,15 @@ import {
   Card,
   Wrapper,
   Cards,
+  CardsNews,
   Header,
   SubHeader,
   Status,
   CardsStudy,
+  LinkCard,
 } from './style';
 import CardOrange from './card_orange_juice.svg';
-import { RoadCardAdm } from '../../components/RoadCardAdm';
+import { RoadCard } from '../../components/RoadCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
 
@@ -45,44 +47,75 @@ export const HomeAdm = () => {
       <Header> Olá, Bianca! </Header>
       <SubHeader>Novidades Orange</SubHeader>
 
-      <Cards>
+      <CardsNews>
         <Swiper
-          style={{ display: 'flex' }}
+          style={{
+            width: '73%',
+            height: '100%',
+            marginLeft: '0px',
+          }}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2.5 },
+            500: { slidesPerView: 1 },
+          }}
         >
-          <SwiperSlide>
-            <a
+          <SwiperSlide style={{ width: '100%' }}>
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
           </SwiperSlide>
           <SwiperSlide>
-            <a
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
           </SwiperSlide>
           <SwiperSlide>
-            <a
+            <LinkCard
               target="blank"
               href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
             >
               <Card src={CardOrange} />
-            </a>
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
+          </SwiperSlide>
+          <SwiperSlide>
+            <LinkCard
+              target="blank"
+              href="https://www.youtube.com/watch?v=dtt6GoGJkKM"
+            >
+              <Card src={CardOrange} />
+            </LinkCard>
           </SwiperSlide>
         </Swiper>
-      </Cards>
+      </CardsNews>
 
       <SubHeader>Trilhas </SubHeader>
 
-      <RoadCardAdm />
+      <RoadCard />
 
       <SubHeader>Atividades dos Usuários</SubHeader>
 
@@ -93,7 +126,10 @@ export const HomeAdm = () => {
           style={{ display: 'flex' }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2.5 },
+            500: { slidesPerView: 1 },
+          }}
         >
           <SwiperSlide
             style={{
@@ -130,7 +166,10 @@ export const HomeAdm = () => {
           style={{ display: 'flex' }}
           scrollbar={{ draggable: true }}
           modules={[Navigation, Pagination, Scrollbar]}
-          slidesPerView={2.5}
+          breakpoints={{
+            900: { slidesPerView: 2.5 },
+            500: { slidesPerView: 1 },
+          }}
         >
           <SwiperSlide
             style={{
