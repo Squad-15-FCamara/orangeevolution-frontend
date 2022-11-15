@@ -7,6 +7,8 @@ export const DiscordContainer = styled.div`
   right: 60px;
   bottom: 50px;
   z-index: 10;
+  transition: 0.4s;
+
   &:hover {
     scale: 1.1;
   }
