@@ -104,18 +104,18 @@ export const ProgressionLinkStyled = styled(Link)`
   margin-top: 16px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.pathname === '/statisticsadm' ? '#36357E' : 'white'};
+    props.pathname === '/roaddevadm/' ? '#36357E' : 'white'};
 `;
 export const ProgressoIcon = styled(FontAwesomeIcon)`
   color: ${(props) =>
-    props.pathname === '/statisticsadm' ? 'white' : '#36357E'};
+    props.pathname === '/roaddevadm/' ? 'white' : '#36357E'};
   padding-left: 29px;
   font-size: 25px;
 `;
 
 export const TextProgression = styled.p`
   color: ${(props) =>
-    props.pathname === '/statisticsadm' ? 'white' : '#36357E'};
+    props.pathname === '/roaddevadm/' ? 'white' : '#36357E'};
   list-style-type: none;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;

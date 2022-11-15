@@ -72,7 +72,7 @@ export const SideBarAdm = () => {
               <NotificaIcon pathname={pathname} icon={faBell} />
               <TextNotifica pathname={pathname}>Notificações</TextNotifica>
             </NotificaLinkStyled>
-            <ProgressionLinkStyled pathname={pathname} to="/statisticsadm">
+            <ProgressionLinkStyled pathname={pathname} to="/roaddevadm/">
               <ProgressoIcon pathname={pathname} icon={faChartLine} />
               <TextProgression pathname={pathname}>
                 Estatísticas
