@@ -4,40 +4,33 @@ import { ContainerTheme } from '../ContentIntro/style';
 import { Wrapper } from '../Home/style';
 import { Stats } from '../RoadDev/style';
 import { ButtonS, FilterContainer, PageTitle } from './style';
-import { statisticsService } from '../../services/statisticsService';
-import { adminService } from '../../services/adminService';
 import { ALL_ROADS } from './roads';
 import { favContext } from '../../context/favoritesContext';
+import { Loading } from '../../components/Loading';
 
 export function SavedContent() {
   const [favCourses, setFavCourses] = useState([]);
-  const [allFavCourses, setAllFavCourses] = useState([]);
-  const [allRoads, setAllRoads] = useState([]);
   const [clicked, setClicked] = useState('Tudo');
   const { favorites } = useContext(favContext);
-  
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    fetchInitialCoursesState()
+    setIsLoading(true);
+    setFavCourses(favorites);
+    setIsLoading(false);
   }, []);
 
-  const fetchInitialCoursesState = async () => {
-    try {
-      let response = await statisticsService.getFavoriteCoursesByUser(4);
-      setAllFavCourses(response.data);
-      setFavCourses(response.data);
-    } catch (e) {
-      console.error('Ops! Encontramos um erro: ' + e)
-    }
-  }
-
   const handleClick = async (title) => {
+    setIsLoading(true)
     setClicked(title)
-    if (!favCourses) return console.error('não há cursos favoritos!');
+    if (!favorites) return console.error('não há cursos favoritos!');
     if (title === "Tudo") {
-      return setFavCourses(allFavCourses);
+      setIsLoading(false)
+      return setFavCourses(favorites);
     }
-    const filteredContent = allFavCourses.filter(item => item.idRoad.includes(title));
+    const filteredContent = favorites.filter(item => item.idRoad.includes(title));
     setFavCourses(filteredContent);
+    setIsLoading(false);
   }
 
   return (
@@ -45,22 +38,36 @@ export function SavedContent() {
       <PageTitle>Salvos</PageTitle>
       <Stats>Acesse aqui seus conteúdos salvos</Stats>
       <FilterContainer>
-        {ALL_ROADS.map((item, index) => <ButtonS key={index} clicked={item.title === clicked} onClick={() => handleClick(item.title)} >{item.title}</ButtonS>)}
+        {ALL_ROADS.map((item, index) => (
+          <ButtonS
+            key={index}
+            clicked={item.title === clicked}
+            onClick={() => handleClick(item.title)}
+          >
+            {item.title}
+          </ButtonS>
+        ))}
       </FilterContainer>
       <ContainerTheme>
-        {favCourses ? favCourses.map((card, index) => (
-          <ChosedRoadCard
-            id={card.id}
-            title={card.title}
-            idType={card.idType}
-            time={card.time}
-            idTheme={card.idTheme}
-            idRoad={card.idRoad}
-            link={card.link}
-            key={index}
-            arrFav={favorites ? favorites : console.log('tem nada aqui nao chefe kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')}
-          />
-        )) : <h1>Você ainda não tem curso salvo!</h1>}
+        {isLoading ? (
+          <Loading />
+        ) : favCourses ? (
+          favCourses.map((card) => (
+            <ChosedRoadCard
+              id={card.id}
+              title={card.title}
+              idType={card.idType}
+              time={card.time}
+              idTheme={card.idTheme}
+              idRoad={card.idRoad}
+              link={card.link}
+              key={card.id}
+              arrFav={favorites}
+            />
+          ))
+        ) : (
+          <h1>Você ainda não tem curso salvo!</h1>
+        )}
       </ContainerTheme>
     </Wrapper>
   );

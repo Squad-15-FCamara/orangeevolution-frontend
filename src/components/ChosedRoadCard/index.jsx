@@ -20,6 +20,8 @@ import {
 import { statisticsService } from '../../services/statisticsService';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useContext } from 'react';
+import { favContext } from '../../context/favoritesContext';
 
 export function ChosedRoadCard({
   id,
@@ -33,30 +35,32 @@ export function ChosedRoadCard({
   description,
   arrFav,
 }) {
-  const [favorites, setFavorites] = useState([]);
+  const [favs, setFavs] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { favorites, setFavorites } = useContext(favContext);
 
   useEffect(() => {
-    setFavorites(arrFav);
+    setFavs(arrFav);
   }, []);
 
-  let favExists;
-
   useEffect(() => {
-    favExists = favorites.some((fav) => fav.id == `${id}`);
+    let favExists = favs.some((fav) => fav.id == `${id}`);
     setIsFavorite(favExists);
-  }, [favorites]);
+  }, [favs]);
 
-  let handleFav = () => {};
-
-  const CheckFavorite = async (id, isFav) => {
+  const toggleFavorite = async (id, isFav) => {
     if (!isFav) {
-      handleFav = statisticsService.addAFavoriteCourse;
+      let response = await statisticsService.addAFavoriteCourse(4, id);
+      setFavorites((oldState) => {
+        return [...oldState, response.data]
+      })
     } else {
-      handleFav = statisticsService.deleteFavoriteCourse;
+      await statisticsService.deleteFavoriteCourse(4, id);
+      setFavorites((oldState) => {
+        return oldState.filter(card => card.id !== id)
+      })
     }
-    await handleFav(4, `${id}`);
     setIsFavorite(!isFav);
   };
 
@@ -65,7 +69,19 @@ export function ChosedRoadCard({
       <Container idRoad={idRoad}>
         <LeftBar idRoad={idRoad} />
         <FaContainer idRoad={idRoad}>
-          <button onClick={() => CheckFavorite(id, isFavorite)}>
+
+         
+
+          <button
+            onClick={
+              () =>
+                toggleFavorite(
+                  id,
+                  isFavorite,
+                )
+            }
+          >
+
             <FontAwesomeIcon
               id="changeColor"
               icon={faBookmark}

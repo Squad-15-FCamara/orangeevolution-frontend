@@ -7,6 +7,7 @@ import { Wrapper, Title } from './style';
 import { adminStatistic } from '../../services/adminStatisticsService';
 import { SearchStatistics } from '../../components/SearchStatistics';
 import { InfoContainer } from '../IntroStatistics/style';
+import { Loading } from '../../components/Loading';
 
 export function SearchAdm() {
   const [fetchResults, setFetchResults] = useState([]);
@@ -17,9 +18,6 @@ export function SearchAdm() {
     if (!inputSearch == '') {
       fetching();
     }
-    if (fetchResults) {
-      setIsLoading(false);
-    }
     if (inputSearch === '') {
       setFetchResults([]);
     }
@@ -29,29 +27,11 @@ export function SearchAdm() {
     try {
       let response = await adminStatistic.getStatsBySearchByTitle(inputSearch);
       setFetchResults(response.data);
+      setIsLoading(false);
     } catch (e) {
       console.error('Ops! Ocorreu um erro: ' + e);
     }
   };
-
-  if (isLoading) {
-    return (
-      <div
-        style={{
-          width: '100%',
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'white',
-          color: 'black',
-          zIndex: '99999',
-        }}
-      >
-        Loading...
-      </div>
-    );
-  }
 
   return (
     <Wrapper>
@@ -75,18 +55,22 @@ export function SearchAdm() {
         <h2>Não Acessado</h2>
       </InfoContainer>
       <ContainerTheme>
-        {fetchResults.map((card, index) => {
-          return (
-            <SearchStatistics
-              idRoad={card.idRoad}
-              name={card.name}
-              doing={card.doing}
-              done={card.done}
-              didnt={card.didnt}
-              key={index}
-            />
-          );
-        })}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          fetchResults.map((card, index) => {
+            return (
+              <SearchStatistics
+                idRoad={card.idRoad}
+                name={card.name}
+                doing={card.doing}
+                done={card.done}
+                didnt={card.didnt}
+                key={index}
+              />
+            );
+          })
+        )}
       </ContainerTheme>
     </Wrapper>
   );
