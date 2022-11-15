@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { useEffect, useState } from 'react';
-import { ChosedRoadCard } from '../../components/ChosedRoadCard';
 import { Context } from '../../context/context';
 import api from '../../services/api';
 import { ContainerTheme } from '../RoadDev/style';
 import { Wrapper, Title } from './style';
-import { courseService } from '../../services/courseService';
+import { adminStatistic } from '../../services/adminStatisticsService';
+import { SearchStatistics } from '../../components/SearchStatistics';
+import { InfoContainer } from '../IntroStatistics/style';
 
 export function SearchAdm() {
   const [fetchResults, setFetchResults] = useState([]);
@@ -26,7 +27,7 @@ export function SearchAdm() {
 
   const fetching = async () => {
     try {
-      let response = await courseService.getCourseByTitle(inputSearch);
+      let response = await adminStatistic.getStatsBySearchByTitle(inputSearch);
       setFetchResults(response.data);
     } catch (e) {
       console.error('Ops! Ocorreu um erro: ' + e);
@@ -64,17 +65,23 @@ export function SearchAdm() {
 
       {console.log(fetchResults)}
 
+      <InfoContainer>
+        <h2>Tema</h2>
+        <span>|</span>
+        <h2>Acessos</h2>
+        <span>|</span>
+        <h2>Concluídos</h2>
+        <span>|</span>
+        <h2>Não Acessado</h2>
+      </InfoContainer>
       <ContainerTheme>
-        {fetchResults.map((course, index) => {
+        {fetchResults.map((card, index) => {
           return (
-            <ChosedRoadCard
-              id={course.id}
-              title={course.title}
-              idType={course.idType}
-              time={course.time}
-              idTheme={course.idTheme}
-              idRoad={course.idRoad}
-              link={course.link}
+            <SearchStatistics
+              name={card.name}
+              doing={card.doing}
+              done={card.done}
+              didnt={card.didnt}
               key={index}
             />
           );
