@@ -5,7 +5,7 @@ import { Context } from '../../context/context';
 import api from '../../services/api';
 import { ContainerTheme } from '../RoadDev/style';
 import { Wrapper, Title } from './style';
-import { courseService } from '../../services/courseService'
+import { courseService } from '../../services/courseService';
 
 export function Search() {
   const [fetchResults, setFetchResults] = useState([]);
@@ -29,7 +29,7 @@ export function Search() {
       let response = await courseService.getCourseByTitle(inputSearch);
       setFetchResults(response.data);
     } catch (e) {
-      console.error('Ops! Ocorreu um erro: ' + e)
+      console.error('Ops! Ocorreu um erro: ' + e);
     }
   };
 
@@ -55,12 +55,7 @@ export function Search() {
   return (
     <Wrapper>
       <Title> Resultados da busca "{inputSearch}"</Title>
-      {fetchResults.length === 0 && (
-        <h3>
-          Não encontramos resultado para sua busca de "{inputSearch}". Tente
-          novamente
-        </h3>
-      )}
+      {fetchResults.length === 0 && <h3>Carregando...</h3>}
 
       {console.log(fetchResults)}
 

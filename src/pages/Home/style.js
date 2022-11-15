@@ -11,6 +11,10 @@ export const Card = styled.img`
 
   @media screen and (max-width: 900px) {
     width: 100%;
+
+    :hover {
+      transform: scale(0.9);
+    }
   }
 `;
 
@@ -56,6 +60,11 @@ export const Cards = styled.div`
   flex-wrap: wrap;
   height: 350px;
   width: 95%;
+
+  @media screen and (max-width: 900px) {
+    height: 230px;
+    padding-left: 16%;
+  }
 `;
 
 export const Status = styled.span`
@@ -63,6 +72,7 @@ export const Status = styled.span`
   color: #333333;
   font-weight: 500;
   margin-bottom: 16px;
+  padding-left: 20px;
 `;
 
 export const CardsStudy = styled(Cards)`
