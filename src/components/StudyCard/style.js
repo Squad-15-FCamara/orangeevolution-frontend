@@ -1,15 +1,26 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
+  min-width: 250px;
   width: 90%;
   height: 100px;
-  border: 1px solid #4140bf;
+  border: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '1px solid #4140bf') ||
+    (idRoad == 'UX UI Design' && '1px solid #dc3cc2') ||
+    (idRoad == 'Quality Assurance QA' && '1px solid #36aa4b') ||
+    (idRoad == 'Soft Skills' && '1px solid #c8bf0d') ||
+    '1px solid #000'};
   border-radius: 20px;
   display: flex;
 `;
 
 export const Paint = styled.aside`
-  background-color: #4140bf;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#4140bf') ||
+    (idRoad == 'UX UI Design' && '#dc3cc2') ||
+    (idRoad == 'Quality Assurance QA' && '#36aa4b') ||
+    (idRoad == 'Soft Skills' && '#c8bf0d') ||
+    '#000'};
   height: 100px;
   width: 20px;
   border-radius: 20px 0 0 20px;
@@ -21,14 +32,24 @@ export const TextContainer = styled.div`
   align-items: flex-start;
   justify-content: space-around;
   padding-left: 16px;
-  background-color: #e2e2ff;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#e2e2ff') ||
+    (idRoad == 'UX UI Design' && '#FFE9FB') ||
+    (idRoad == 'Quality Assurance QA' && '#D2F1D9') ||
+    (idRoad == 'Soft Skills' && '#FFFDD2') ||
+    '#000'};
   width: 80%;
 `;
 
 export const FaContainer = styled.div`
   display: flex;
   align-items: center;
-  background-color: #e2e2ff;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#e2e2ff') ||
+    (idRoad == 'UX UI Design' && '#FFE9FB') ||
+    (idRoad == 'Quality Assurance QA' && '#D2F1D9') ||
+    (idRoad == 'Soft Skills' && '#FFFDD2') ||
+    '#000'};
   width: 12%;
   border-radius: 0px 20px 20px 0px;
   a {
@@ -57,10 +78,20 @@ export const Title = styled.span`
 
 export const Type = styled.div`
   height: 21px;
-  background-color: #4140bf;
+  background-color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#4140bf') ||
+    (idRoad == 'UX UI Design' && '#dc3cc2') ||
+    (idRoad == 'Quality Assurance QA' && '#36aa4b') ||
+    (idRoad == 'Soft Skills' && '#c8bf0d') ||
+    '#000'};
   border-radius: 4px;
   padding: 2px;
-  color: #fbfbfb;
+  color: ${({ idRoad }) =>
+    (idRoad == 'FullStack' && '#e2e2ff') ||
+    (idRoad == 'UX UI Design' && '#FFE9FB') ||
+    (idRoad == 'Quality Assurance QA' && '#D2F1D9') ||
+    (idRoad == 'Soft Skills' && '#FFFDD2') ||
+    '#000'};
   font-weight: 700;
   font-size: 0.875rem;
   display: flex;

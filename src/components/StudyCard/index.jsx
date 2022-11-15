@@ -16,18 +16,18 @@ import {
 
 export function StudyCard({ title, idType, time, idTheme, idRoad, link }) {
   return (
-    <Card>
-      <Paint />
-      <TextContainer>
+    <Card idRoad={idRoad}>
+      <Paint idRoad={idRoad} />
+      <TextContainer idRoad={idRoad}>
         <Title>{title}</Title>
         <TypeContainer>
-          <Type>{idType}</Type>
+          <Type idRoad={idRoad}>{idType}</Type>
           <Duration>{time}min</Duration>
         </TypeContainer>
         <Theme>{idTheme}</Theme>
         <Road>{idRoad}</Road>
       </TextContainer>
-      <FaContainer>
+      <FaContainer idRoad={idRoad}>
         <a target="_blank" href={link}>
           <FontAwesomeIcon icon={faChevronRight} size="xl" />
         </a>
